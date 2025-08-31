@@ -1,0 +1,171 @@
+<script>
+        // Highlight active navbar link based on current URL
+        document.addEventListener("DOMContentLoaded", function() {
+          var currentUrl = window.location.pathname;
+          document.querySelectorAll(".nav-link").forEach(function(link) {
+           
+            // Add click event to set active class
+            link.addEventListener("click", function(e) {
+              document.querySelectorAll(".nav-item.active").forEach(function(activeItem) {
+                activeItem.classList.remove("active");
+              });
+              var parentItem = this.closest('.nav-item');
+              if (parentItem) {
+                parentItem.classList.add("active");
+              }
+            });
+          });
+        });
+      </script>
+<!--End Footer-->
+<!-- End Page  subscription -->
+<!-- <script src="main/assets/plugins/jquery/jquery.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- Bootstrap js-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+
+ <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<!-- <script src="main/assets/plugins/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- Select2 js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Perfect-scrollbar js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.6/perfect-scrollbar.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="/main/assets/plugins/perfect-scrollbar/pscroll1.js"></script>
+<!-- Apex charts js -->
+<script src="main/assets/plugins/apexcharts/apexcharts.js"></script>
+<!-- Sidemenu js -->
+<!-- <script src="main/assets/plugins/sidemenu.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/side-menu@latest/dist/side-menu.min.js"></script>
+<!-- Internal Clipboard js-->
+<script src="main/assets/plugins/clipboard/clipboard.min.js"></script>
+<script src="main/assets/plugins/clipboard/clipboard.js"></script>
+<!-- Sidebar js -->
+<script src="/main/assets/plugins/sidemenu.js"></script>
+
+<!-- Color Theme js -->
+<script src="main/assets/js/themeColors.js"></script>
+<!-- swither styles js -->
+<script src="main/assets/js/swither-styles.js"></script>
+<script src="main/assets/js/select2.min.js"></script>
+<script src="main/assets/js/choice.js"></script>
+<!-- Custom js -->
+<script src="/public/main/assets/js/index.js"></script>
+<script src="/public/main/assets/js/percent.js"></script>
+<script src="/main/assets/js/Animated.js"></script>
+
+<!-- insufficent fund, min amount -->
+<script src="main/assets/js/script.js"></script>
+
+<!-- <script src="main/assets/js/ironface.js"></script> -->
+<script src="main/assets/js/custom.js"></script>
+<script src='main/assets/js/Sound.js'></script>
+
+<script type="text/javascript">
+  
+// In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+$(function() {
+    $("#withdrawalMethod").change(function() {
+        if ($(this).val() == "crypto") {
+            $("#beneficiaryField1").fadeIn();
+            $("#beneficiaryField2").hide();
+            $("#beneficiaryField3").hide();
+            $("#beneficiaryField4").hide();
+            $("#beneficiaryField5").hide();
+            $("#beneficiaryField6").hide();
+        } else if ($(this).val() == "forex") {
+            $("#beneficiaryField2").fadeIn();
+            $("#beneficiaryField1").hide();
+
+            $("#beneficiaryField3").hide();
+
+        } else if ($(this).val() == "vip") {
+            $("#beneficiaryField3").fadeIn();
+            $("#beneficiaryField1").hide();
+            $("#beneficiaryField2").hide();
+
+        }
+    });
+});
+
+function displayCurrentTime() {
+    setInterval(function() {
+        var currentTime = new Date();
+        var dateOptions = {
+            month: 'long', // Display the full month name (e.g., 'January', 'February', ...)
+            day: '2-digit', // Display the day with leading zeros (e.g., '01', '02', ...)
+            year: 'numeric' // Display the full year (e.g., '2024')
+        };
+        
+        var timeOptions = {
+            hour: '2-digit', // Display the hour with leading zeros (e.g., '01', '02', ..., '12')
+            minute: '2-digit', // Display the minute with leading zeros (e.g., '00', '01', ..., '59')
+            second: '2-digit', // Display the second with leading zeros (e.g., '00', '01', ..., '59')
+            hour12: false // Use 24-hour format (e.g., '13' instead of '1 PM')
+        };
+        
+        var formattedDate = currentTime.toLocaleDateString('en-US', dateOptions);  
+        var formattedTime = currentTime.toLocaleTimeString('en-US', timeOptions);
+        var time = formattedDate.replace(',', '');
+        var nodate = formattedDate.replace(',', '') + " " + formattedTime;
+        $('#time').text("Current Time: " + nodate);
+        document.cookie = "data=" + time + ";";
+        document.cookie = "nodate=" + nodate + ";";
+    }, 1000); // Update time every 1000 milliseconds (1 second)
+}
+displayCurrentTime();
+
+$(document).ready(function() {
+    $("#toggleButton").click(function() {
+        $("#myDiv").toggle();
+    });
+});
+</script> 
+
+ <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+    </script>
+
+    <!-- <script>
+document.getElementById('avatarForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = e.target;
+  var formData = new FormData(form);
+
+  fetch(form.action, {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.avatarUrl) {
+      document.getElementById('avatarImg').src = data.avatarUrl;
+    } else {
+      alert('Upload failed');
+    }
+  })
+  .catch(() => alert('Upload error'));
+});
+</script> -->
+
+</body>
+
+
+
+
+
+</html>
+
+
+
+

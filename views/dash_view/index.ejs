@@ -1,0 +1,968 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="main-content side-content pt-0">
+  <div class="main-container container-fluid">
+    <div class="inner-body">
+      <div id="mobileshow" class="see"></div>
+      <div class="sees hide-mobile"></div>
+      <!--Row-->
+      <div class="row row-sm">
+        <div class="col-sm-12 col-lg-12 col-xl-8 col-xxl-8">
+          <!--Row-->
+          <div class="row row-sm">
+            <!-- <div class="col-12 col-md-4 col-xxl-3">
+                            <div class="card custom-card bgd-svg" style="min-height: 150px;">
+                                <div class="card-body">
+                                    <div class="transaction d-flex justify-content-between align-items-start">
+                                        <div class="transaction-blog">
+                                            <i class="fa-solid fa-robot fs-3 text-white"></i>
+                                            <div class="transaction-details d-flex">
+                                                <div>
+                                                    <p class="text-dark tx-bold-12 mb-0 fs-6"><span
+                                                            class="ps-2 livenumber"
+                                                            id="some_div">30</span>
+                                                    </p>
+                                                    <h2 class="tx-bold-12 fw-bold fa-beat-fade stake blink">
+                                                        $<span id="stake">0</span>
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="rounded-3 py-1 px-2 text-success fw-bold fs-7 bg-lighsuccess">Live
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+            <div class="col-12 col-md-4 col-xxl-3">
+              <div class="card custom-card bgd-svg" style="min-height: 100px">
+                <div
+                  class="card-body"
+                  style="
+                    background-image: url(images/sp.png);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    height: 100%;
+                    background-position: center;
+                    background-size: cover;
+                    margin-bottom: 20px;
+                    border-radius: 8px;
+                    padding: 5px;
+                    min-height: 130px;
+                    overflow: hidden;
+                    background-color: #181d2a;
+                    border: 1px solid #e0e1e1;
+                  "
+                >
+                  <div
+                    class="transaction d-flex justify-content-between align-items-start"
+                  >
+                    <div class="transaction-blog">
+                      <i
+                        class="fa-solid fa-circle-dollar-to-slot fs-3 text-white"
+                      ></i>
+                      <div class="transaction-details d-flex">
+                        <div>
+                          <p class="text-dark tx-bold-12 mb-0 fs-6">
+                            Total Balance
+                          </p>
+                          <h4 class="tx-bold-12">
+                            <%= user.currency %> <%=
+                            Number(asset.total_balance).toLocaleString('en-US',
+                            { minimumFractionDigits: 2 }) %>
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                    <span
+                      class="rounded-3 py-1 px-2 text-success fw-bold fs-7 bg-lighsuccess"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 col-xxl-3">
+              <div class="card custom-card bgd-svg" style="min-height: 100px">
+                <div
+                  class="card-body"
+                  style="
+                    background-image: url(images/sp.png);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    height: 100%;
+                    background-position: center;
+                    background-size: cover;
+                    margin-bottom: 20px;
+                    border-radius: 8px;
+                    padding: 5px;
+                    min-height: 130px;
+                    overflow: hidden;
+                    background-color: #181d2a;
+                    border: 1px solid #e0e1e1;
+                  "
+                >
+                  <div class="transaction">
+                    <div class="transaction-blog">
+                      <i
+                        class="fa-solid fa-circle-dollar-to-slot fs-3 text-white"
+                      ></i>
+                      <div class="transaction-details d-flex">
+                        <div>
+                          <span class="text-dark tx-bold-12 fs-6"> Profit</span>
+                          <h4 class="tx-bold-12 xeffect">
+                            <%= user.currency %> <%=
+                            Number(asset.profit).toLocaleString('en-US', {
+                            minimumFractionDigits: 2 }) %>
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 col-xxl-3">
+              <div class="card custom-card bgd-svg" style="min-height: 100px">
+                <div
+                  class="card-body"
+                  style="
+                    background-image: url(images/sp.png);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    height: 100%;
+                    background-position: center;
+                    background-size: cover;
+                    margin-bottom: 20px;
+                    border-radius: 8px;
+                    padding: 5px;
+                    min-height: 130px;
+                    overflow: hidden;
+                    background-color: #181d2a;
+                    border: 1px solid #e0e1e1;
+                  "
+                >
+                  <div class="transaction">
+                    <div class="transaction-blog">
+                      <i class="fa-solid fa-gift fs-4 text-white"></i>
+                      <div class="transaction-details d-flex">
+                        <div>
+                          <span class="text-dark tx-bold-12 fs-6"
+                            >Trade Bonus</span
+                          >
+                          <h4 id="trade" class="tx-bold-12 xeffect">
+                            <%= user.currency %> <%=
+                            Number(asset.trade_bonus).toLocaleString('en-US', {
+                            minimumFractionDigits: 2 }) %>
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 col-xxl-3">
+              <div class="card custom-card bgd-svg" style="min-height: 100px">
+                <div
+                  class="card-body"
+                  style="
+                    background-image: url(images/sp.png);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    height: 100%;
+                    background-position: center;
+                    background-size: cover;
+                    margin-bottom: 20px;
+                    border-radius: 8px;
+                    padding: 5px;
+                    min-height: 130px;
+                    overflow: hidden;
+                    background-color: #181d2a;
+                    border: 1px solid #e0e1e1;
+                  "
+                >
+                  <div class="transaction">
+                    <div class="transaction-blog">
+                      <i class="fa-solid fa-gift fs-4 text-white"></i>
+                      <div class="transaction-details d-flex">
+                        <div>
+                          <span class="text-dark tx-bold-12 fs-6">
+                            Referral Bonus
+                          </span>
+                          <h4 class="tx-bold-12" id="bonus">
+                            <%= user.currency %> <%=
+                            Number(asset.referal_bonus).toLocaleString('en-US',
+                            { minimumFractionDigits: 2 }) %>
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 col-xxl-3">
+              <div class="card custom-card bgd-svg" style="min-height: 100px">
+                <div
+                  class="card-body"
+                  style="
+                    background-image: url(images/sp.png);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    height: 100%;
+                    background-position: center;
+                    background-size: cover;
+                    margin-bottom: 20px;
+                    border-radius: 8px;
+                    padding: 5px;
+                    min-height: 130px;
+                    overflow: hidden;
+                    background-color: #181d2a;
+                    border: 1px solid #e0e1e1;
+                  "
+                >
+                  <div
+                    class="transaction d-flex justify-content-between align-items-start"
+                  >
+                    <div class="transaction-blog">
+                      <i
+                        class="fa-solid fa-filter-circle-dollar fs-4 text-white"
+                      ></i>
+                      <div class="transaction-details d-flex">
+                        <div>
+                          <p class="text-dark tx-bold-12 mb-0 fs-6">
+                            Total Won
+                          </p>
+                          <h4 id="won" class="tx-bold-12 xeffect">
+                            <%= user.currency %> <%=
+                            Number(asset.total_won).toLocaleString('en-US', {
+                            minimumFractionDigits: 2 }) %>
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                    <span
+                      class="rounded-3 py-1 px-2 text-success fw-bold fs-7 bg-lighsuccess"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 col-xxl-3">
+              <div class="card custom-card bgd-svg" style="min-height: 100px">
+                <div
+                  class="card-body"
+                  style="
+                    background-image: url(images/sp.png);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    height: 100%;
+                    background-position: center;
+                    background-size: cover;
+                    margin-bottom: 20px;
+                    border-radius: 8px;
+                    padding: 5px;
+                    min-height: 130px;
+                    overflow: hidden;
+                    background-color: #181d2a;
+                    border: 1px solid #e0e1e1;
+                  "
+                >
+                  <div
+                    class="transaction d-flex justify-content-between align-items-start"
+                  >
+                    <div class="transaction-blog">
+                      <i
+                        class="fa-solid fa-filter-circle-dollar fs-4 text-white"
+                      ></i>
+                      <div class="transaction-details d-flex">
+                        <div>
+                          <p class="text-dark tx-bold-12 mb-0 fs-6">
+                            Total Loss
+                          </p>
+                          <h4 id="loss" class="tx-bold-12 xeffect">
+                            <%= user.currency %> <%=
+                            Number(asset.total_loss).toLocaleString('en-US', {
+                            minimumFractionDigits: 2 }) %>
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                    <span
+                      class="rounded-3 py-1 px-2 text-success fw-bold fs-7 bg-lighsuccess"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-12">
+                            <div class="card custom-card">
+                                <div class="card-body" >
+                                    <div class="transaction">
+                                        <div class="transaction-blog" style="min-height: auto;">
+                                            <i class="fa-solid fa-spinner fa-beat-fade fs-4 text-white"></i>
+                                            <div class="transaction-details d-flex">
+                                                <div>
+                                                    <span class="text-dark tx-bold-12">Trade Progress</span>
+                                                    <h4 class="tx-bold-12" id="progress">
+                                                        0%
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated fs-7 fw-bold h-100"
+                                                role="progressbar"
+                                                aria-valuenow="0"
+                                                aria-valuemin="0" aria-valuemax="100"
+                                                style="width: 0%">
+                                                0%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+            <div class="col-sm-12 col-lg-12 col-xl-12 col-xxl-12 chartCon">
+              <!-- TradingView Widget BEGIN -->
+              <div
+                class="tradingview-widget-container"
+                style="width: 100%; height: 100%"
+              >
+                <iframe
+                  scrolling="no"
+                  allowtransparency="true"
+                  frameborder="0"
+                  src="https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22autosize%22%3Atrue%2C%22symbol%22%3A%22NASDAQ%3AAAPL%22%2C%22interval%22%3A%22D%22%2C%22timezone%22%3A%22Etc%2FUTC%22%2C%22theme%22%3A%22dark%22%2C%22style%22%3A%221%22%2C%22withdateranges%22%3Atrue%2C%22hide_side_toolbar%22%3Afalse%2C%22allow_symbol_change%22%3Atrue%2C%22support_host%22%3A%22https%3A%2F%2Fwww.tradingview.com%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22utm_source%22%3A%22algorithmswipes.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22advanced-chart%22%2C%22page-uri%22%3A%22algorithmswipes.com%2Faccount%2Fuser%2Findex.php%22%7D"
+                  title="advanced chart TradingView widget"
+                  lang="en"
+                  style="
+                    user-select: none;
+                    box-sizing: border-box;
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                  "
+                ></iframe>
+
+                <style>
+                  .tradingview-widget-copyright {
+                    font-size: 13px !important;
+                    line-height: 32px !important;
+                    text-align: center !important;
+                    vertical-align: middle !important;
+                    /* @mixin sf-pro-display-font; */
+                    font-family: -apple-system, BlinkMacSystemFont,
+                      "Trebuchet MS", Roboto, Ubuntu, sans-serif !important;
+                    color: #b2b5be !important;
+                  }
+
+                  .tradingview-widget-copyright .blue-text {
+                    color: #2962ff !important;
+                  }
+
+                  .tradingview-widget-copyright a {
+                    text-decoration: none !important;
+                    color: #b2b5be !important;
+                  }
+
+                  .tradingview-widget-copyright a:visited {
+                    color: #b2b5be !important;
+                  }
+
+                  .tradingview-widget-copyright a:hover .blue-text {
+                    color: #1e53e5 !important;
+                  }
+
+                  .tradingview-widget-copyright a:active .blue-text {
+                    color: #1848cc !important;
+                  }
+
+                  .tradingview-widget-copyright a:visited .blue-text {
+                    color: #2962ff !important;
+                  }
+                </style>
+              </div>
+              <!-- TradingView Widget END -->
+            </div>
+            <br /><br />
+
+            <div class="col-12">
+              <div class="card custom-card overflow-hidden">
+                <div class="card-header border-bottom">
+                  <div>
+                    <h3 class="card-title tx-18">
+                      <label class="main-content-label tx-15"> Referral </label>
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="transaction">
+                    <div>
+                      <p>
+                        <span class="text-dark tx-bold-12">
+                          Referral Link:
+                        </span>
+                        <br />
+                      </p>
+
+                      <center>
+                        <div class="input-group">
+                          <input
+                            style="
+                              font-size: 14px;
+                              width: 70%;
+                              background-color: #222739;
+                              color: #f9f9f9;
+                              border-radius: 8px 0px 0px 8px;
+                              border: 1px solid #ced4da;
+                              padding: 12px 5px;
+                            "
+                            type="text"
+                            id="HTML"
+                            value="https://zenithswipes.com/account/user/register?ref=<%=user.username%>"
+                            size="20"
+                            readonly
+                          />
+                          <button
+                            style="
+                              border-radius: 8px;
+                              background-color: #007bd8;
+                            "
+                            class="btn btn-info"
+                            id="HTMLButton"
+                          >
+                            Copy
+                          </button>
+                          <br /><br />
+
+                          <script>
+                            let HTML = document.getElementById("HTML");
+                            let HTMLButton =
+                              document.getElementById("HTMLButton");
+
+                            HTMLButton.onclick = function () {
+                              HTML.select();
+                              document.execCommand("copy");
+                              HTMLButton.innerText = "Copied!";
+                            };
+                          </script>
+                        </div>
+                      </center>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--End row-->
+        </div>
+
+        <div class="col-sm-12 col-lg-12 col-xl-4 col-xxl-4">
+          <div class="card custom-card overflow-hidden crypto-buysell-card">
+            <div class="card-header border-bottom">
+              <h3 class="card-title tx-18">
+                <center>
+                  <label class="main-content-label tx-15"> Live Trading </label>
+                </center>
+              </h3>
+            </div>
+            <div class="card-body">
+              <!--  <div class="alert alert-info fade show" role="alert">
+                                <p class="mb-0 text-center fw-bold fs-6 text-red">INSUFFICIENT TRADING BALANCE</p>
+                            </div>  -->
+              <form action="tran.php" method="post" class="form">
+                <div class="form-group">
+                  <p class="mg-b-10 tx-semibold mb-0">Type</p>
+                  <select
+                    selected
+                    readonly
+                    name="type"
+                    class="form-control select2-no-search form-select"
+                  >
+                    <option value="crypto">Crypto</option>
+                    <option value="Stocks">Stocks</option>
+                  </select>
+                </div>
+                <div class="mt-2">
+                  <p class="mb-0 tx-semibold">Crypto Assets</p>
+                  <select
+                    id="tradePair"
+                    name="asset"
+                    required=""
+                    class="form-control select2-no-search form-select"
+                  >
+                    <option data-balance="0" value="BTC">BTC/USD</option>
+                    <option data-balance="0" value="ETH">ETH/USD</option>
+                    <option data-balance="0" value="USDT">USDT/USD</option>
+                    <option data-balance="0" value="XRP">XRP/USD</option>
+                    <option data-balance="0" value="SOL">SOL/USD</option>
+                    <option data-balance="0" value="BNB">BNB/USD</option>
+                    <option data-balance="0" value="DOGE">DOGE/USD</option>
+                    <option data-balance="0" value="USDC">USDC/USD</option>
+                    <option data-balance="0" value="PLSX">PLSX/USD</option>
+                    <option data-balance="0" value="SEND">SEND/USD</option>
+                    <option data-balance="0" value="AERGO">AERGO/USD</option>
+                    <option data-balance="0" value="APED">APED/USD</option>
+                    <option data-balance="0" value="AAVE">AAVE/USD</option>
+                  </select>
+                </div>
+                <div class="form-group text-start mt-2">
+                  <label class="tx-medium mb-0">Amount</label>
+                  <input
+                    class="form-control"
+                    type="number"
+                    name="amount"
+                    placeholder="0.001"
+                    step="any"
+                    required=""
+                  />
+                </div>
+                <div class="form-group">
+                  <p class="tx-semibold mb-0">Leverage</p>
+                  <select
+                    id="inputState"
+                    name="leverage"
+                    class="form-control select2-no-search form-select"
+                  >
+                    <option selected="" disable="" value="">Leverage</option>
+                    <option value="1:10">1:10</option>
+                    <option value="1:20">1:20</option>
+                    <option value="1:30">1:30</option>
+                    <option value="1:40">1:40</option>
+                    <option value="1:50">1:50</option>
+                    <option value="1:60">1:60</option>
+                    <option value="1:70">1:70</option>
+                    <option value="1:80">1:80</option>
+                    <option value="1:90">1:90</option>
+                    <option value="1:100">1:100</option>
+                  </select>
+                </div>
+
+                <!--  <div class="form-group text-start mt-2">
+                                    <label class="tx-medium mb-0">Take Profit</label>
+                                    <input class="form-control" name="tp" placeholder="1.0013" type="text" required="">
+                                </div>
+                               -->
+
+                <div class="form-group">
+                  <p class="mb-0 tx-semibold">Duration:</p>
+                  <select
+                    class="form-control select2-no-search form-select"
+                    name="duration"
+                    required=""
+                  >
+                    <option selected="" disable="" value="">Duration</option>
+                    <option value="1 Minutes">1 Minute</option>
+                    <option value="5 Minutes">5 Minutes</option>
+                    <option value="15 Minutes">15 Minutes</option>
+                    <option value="30 Minutes">30 Minutes</option>
+                    <option value="60 Minutes">1 Hour</option>
+                    <option value="4 Hours">4 Hours</option>
+                    <option value="1 Days">1 Day</option>
+                    <option value="2 Days">2 Days</option>
+                    <option value="7 Days">7 Days</option>
+                    <option value="7 Days">30 Days</option>
+                  </select>
+                </div>
+
+                <!--   <div class="alert alert-info fade show" role="alert">
+                                    <center>Your trade will auto close if SL or TP does not hit.</center>
+                                </div> -->
+
+                <input
+                  type="hidden"
+                  name="username"
+                  value="<%= user && user.username ? user.username : '' %>"
+                />
+
+                <!--                               
+ <div class="d-flex stylish_radio">
+                                    <div class="button w-50" >
+                                        <input style='background-color:#3ec377;' type="radio" id="a25" value="Buy" name="action" required="">
+                                        <label style='background-color:#3ec377;' class="btn btn-outline-primary btn-lg btn-block rounded-12 mt-12 buy"
+                                            for="a25">BUY</label>
+                                    </div>
+                                    <div class="mx-2"></div>
+                                    <div class="button w-50">
+                                        <input type="radio" id="a50" value="Sell" name="action" required="">
+                                        <label class="btn btn-outline-primary btn-lg btn-block rounded-12 mt-12 sell"
+                                            for="a50">SELL</label>
+                                    </div>
+                                </div>
+
+
+--><br /><br />
+
+                <div class="row">
+                  <div class="col-6">
+                    <label
+                      for="call"
+                      class="btn btn-success btn-block place_order"
+                      >BUY</label
+                    >
+                    <input
+                      type="submit"
+                      name="type"
+                      id="call"
+                      value="Buy"
+                      class="d-none"
+                    />
+                  </div>
+                  <div class="col-6">
+                    <label
+                      for="put"
+                      class="btn btn-danger btn-block place_order"
+                      >SELL</label
+                    >
+                    <input
+                      type="submit"
+                      name="type"
+                      id="put"
+                      value="Sell"
+                      class="d-none"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="card custom-card">
+            <div class="card-header border-bottom">
+              <h3 class="card-title tx-18">
+                <label class="main-content-label tx-15">ACCOUNT SUMMARY</label>
+              </h3>
+            </div>
+            <div class="card-body">
+              <div class="transaction">
+                <div class="transaction-blog">
+                  <div class="">
+                    <svg
+                      class="wd-30 ht-40 me-3 my-auto"
+                      fill="#01b8ff"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewbox="0 0 512 512"
+                    >
+                      <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                      <path
+                        d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="transaction-details d-flex">
+                    <div>
+                      <span class="text-dark tx-bold-12">Total Deposits</span>
+                      <h5 class="text-muted tx-bold-12 mb-0"><%= asset.total_deposit %></h5>
+                    </div>
+                    <div class="ms-auto fs-14 text-danger font-weight-normal">
+                      <a
+                        href="/account/user/deposits"
+                        class="btn ripple btn-warning-transparent"
+                        >Deposit</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="transaction">
+                <div class="transaction-blog">
+                  <div class="">
+                    <svg
+                      class="wd-30 ht-40 me-3 my-auto"
+                      fill="#01b8ff"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewbox="0 0 512 512"
+                    >
+                      <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                      <path
+                        d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM184 232H328c13.3 0 24 10.7 24 24s-10.7 24-24 24H184c-13.3 0-24-10.7-24-24s10.7-24 24-24z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="transaction-details d-flex">
+                    <div>
+                      <span class="text-dark tx-bold-12">
+                        Total Withdrawals</span
+                      >
+                      <h5 class="text-muted tx-bold-12 mb-0"><%= asset.total_withdrawal %></h5>
+                    </div>
+                    <div class="ms-auto fs-14 text-danger font-weight-normal">
+                      <a
+                        href="/account/user/withdraw"
+                        class="btn ripple btn-warning-transparent"
+                      >
+                        Withdraw
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="transaction">
+                <div class="transaction-blog">
+                  <div class="">
+                    <i class="fa-solid fa-circle-xmark fs-3 text-danger"></i>
+                  </div>
+                  <div class="transaction-details d-flex">
+                    <div>
+                      <span class="text-dark tx-bold-12">Verification</span>
+                      <p class="text-muted tx-bold-12 mb-0">
+                        Your account is not verified.
+                      </p>
+                    </div>
+                    <div class="ms-auto fs-14 text-danger font-weight-normal">
+                      <a
+                        href="/account/user/profile"
+                        class="btn ripple btn-warning-transparent"
+                        >Verify</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 
+                    <div class="card custom-card">
+                        <div class="card-header border-bottom">
+                            <h4 class="card-title tx-18"><label class="main-content-label tx-15"> Referral </label>
+                            </h4>
+                        </div>
+                       
+                       
+                       
+                        <div class="card-body">
+                            <div class="transaction">
+                                <div >
+                                   
+                                      
+                                   <p>   <span class="text-dark tx-bold-12"> Referral Link: </span> <br> </p>
+                                       
+                                        <center>     <div class="input-group">
+                 
+	 <input style="font-size: 14px;
+	 width:70%;
+	 background-color:#222739;
+	 color:#f9f9f9;
+    border-radius: 8px 0px 0px 8px;
+    border: 1px solid #ced4da;
+    padding: 12px 5px;" type='text' id="HTML" value="https://algorithmswipes.com/account/user/register.php?ref=Aldoree" size="20" readonly>  <button style='border-radius: 8px;background-color:#007bd8' class='btn btn-info' id="HTMLButton">Copy</button>   <br><br>
+    
+
+<script>
+let HTML = document.getElementById("HTML");
+let HTMLButton = document.getElementById("HTMLButton");
+
+HTMLButton.onclick = function() {
+  HTML.select();
+  document.execCommand("copy");
+  HTMLButton.innerText = "Copied!"
+}
+</script>
+       
+                </div> 
+             </center>
+                                       
+                                       
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        
+                        -->
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="card custom-card overflow-hidden">
+          <div class="card-header border-bottom">
+            <div>
+              <h3 class="card-title tx-18">
+                <label class="main-content-label tx-15"> Recent Trades </label>
+              </h3>
+            </div>
+          </div>
+          <div class="card-body pb-2">
+            <div class="table-responsive">
+              <table
+                class="table table-borderless table-striped table-hover text-nowrap text-md-nowrap table-hover mg-b-0"
+              >
+                <tbody>
+                  <tr>
+                    <th style="text-align: center">ID</th>
+
+                    <th style="text-align: center">Assets</th>
+                    <th style="text-align: center">Amount</th>
+
+                    <th style="text-align: center">Action</th>
+
+                    <th style="text-align: center">Duration</th>
+
+                    <th style="text-align: center">Result</th>
+
+                    <th style="text-align: center">Profit/Loss</th>
+
+                    <th style="text-align: center">Leverage</th>
+
+                    <th style="text-align: center">Status</th>
+
+                    <th style="text-align: center">Type</th>
+                    <th style="text-align: center">Trade Time</th>
+                  </tr>
+
+                  <style>
+                    .section {
+                      width: 308px;
+                    }
+
+                    @-webkit-keyframes gradientMove {
+                      0% {
+                        background-position: 0px 0px;
+                      }
+                      100% {
+                        background-position: 100px 0px;
+                      }
+                    }
+                    @keyframes gradientMove {
+                      0% {
+                        background-position: 0px 0px;
+                      }
+                      100% {
+                        background-position: 100px 0px;
+                      }
+                    }
+
+                    @-webkit-keyframes reload {
+                      0% {
+                        width: 20px;
+                      }
+                      95% {
+                        width: 300px;
+                      }
+                      100% {
+                        width: 20px;
+                      }
+                    }
+                    @keyframes reload {
+                      0% {
+                        width: 20px;
+                      }
+                      95% {
+                        width: 300px;
+                      }
+                      100% {
+                        width: 20px;
+                      }
+                    }
+
+                    .progress-bar1 {
+                      width: 100%;
+                      background: #000;
+                      padding: 3px;
+                      border-radius: 50px;
+                      box-shadow: inset 0px 1px 1px 0px black, 0px 1px 1px 0px;
+                    }
+
+                    .polyfill {
+                      width: 300px;
+                      height: 25px;
+                      background: repeating-linear-gradient(
+                        45deg,
+                        /* Change angle if needed */ green 0%,
+                        green 3%,
+                        black 0%,
+                        black 20%
+                      );
+
+                      background-size: 35px 25px;
+                      border-radius: 50px;
+                      box-shadow: inset 0px 1px 3px 0px #f2f2f2;
+                      -webkit-animation-name: gradientMove, reload;
+                      animation-name: gradientMove, reload;
+                      -webkit-animation-duration: 0.1s, 15s;
+                      animation-duration: 0.1s, 15s;
+                      -webkit-animation-duration: 0.1s, 15s;
+                      -webkit-animation-iteration-count: infinite;
+                      animation-iteration-count: infinite;
+                      -webkit-animation-fill-mode: both;
+                      animation-fill-mode: both;
+                      -webkit-animation-timing-function: linear;
+                      animation-timing-function: linear;
+                    }
+                  </style>
+
+                  <tr>
+                    <td colspan="12" class="text-center fw-bold">
+                      You have not placed any trade.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- End Row -->
+        <!--Row-->
+        <div class="row row-sm mt-4 mb-5"></div>
+        <!-- End Row -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function generateNoise(opacity) {
+      if (!!!document.createElement("canvas").getContext) {
+        return false;
+      }
+
+      var canvas = document.createElement("canvas"),
+        ctx = canvas.getContext("2d"),
+        x,
+        y,
+        number,
+        opacity = opacity || 0.2;
+
+      canvas.width = 250;
+      canvas.height = 250;
+
+      for (x = 0; x < canvas.width; x++) {
+        for (y = 0; y < canvas.height; y++) {
+          number = Math.floor(Math.random() * 40);
+          ctx.fillStyle =
+            "rgba(" +
+            number +
+            "," +
+            number +
+            "," +
+            number +
+            "," +
+            opacity +
+            ")";
+          ctx.fillRect(x, y, 1, 1);
+        }
+      }
+
+      document.body.style.backgroundImage =
+        "url(" + canvas.toDataURL("image/png") + ")";
+    }
+
+    generateNoise(0.1);
+  </script>
+
+  <br /><br /><br /><br />
+
+  <%-include('../partials/footer')%>
+</div>

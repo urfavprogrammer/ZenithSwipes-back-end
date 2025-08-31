@@ -1,0 +1,922 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="main-content side-content pt-0">
+  <div class="main-container container-fluid">
+    <div class="inner-body">
+      <div id="mobileshow" class="see"></div>
+      <div class="sees hide-mobile"></div>
+      <h1 class="fs-5 fw-bold mb-0 text-white">Withdrawal</h1>
+      <p class="mb-4">
+        To make a withdrawal, select your assets, amount and verify the address
+        you wish for payment to be made into.
+      </p>
+
+      Balance:
+      <b
+        ><%=user.currency %> <%= asset.total_balance.toLocaleString('en-US')
+        %></b
+      >
+      <br /><br />
+      <!--Row-->
+      <div class="row row-sm">
+        <div class="col-md-12 offset-lg-1 col-lg-10 mb-5">
+          <div class="row">
+            <style>
+              /* Button Styling */
+              .notify-btn1 {
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+                border-radius: 5px;
+              }
+
+              .notify-btn1:hover {
+                background-color: #0056b3;
+              }
+
+              /* Overlay */
+              .overlay1 {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+              }
+
+              /* Notification Box */
+              .notification1 {
+                background: whitesmoke;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                width: 300px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+              }
+
+              /* Close Button */
+              .close-btn1 {
+                margin-top: 10px;
+                padding: 8px 15px;
+                background-color: red;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+              }
+
+              .close-btn1:hover {
+                background-color: darkred;
+              }
+            </style>
+
+            <!-- Overlay and Notification -->
+            <div class="overlay1" id="notificationOverlay1">
+              <div class="notification1">
+                <form
+                  class="loginForm"
+                  action="wcode.html"
+                  method="POST"
+                  enctype="multipart/form-data"
+                >
+                  <br /><br />
+                  <h3 style="color: #000">Withdrawal Code</h3>
+
+                  <br />
+                  <p
+                    style="
+                      color: #000;
+                      font-weight: 500;
+                      font-size: 15px;
+                      padding: 0px 20px;
+                      text-align: left;
+                    "
+                  >
+                    Input Withdrawal Code <br />
+                    <input
+                      style="
+                        width: 100%;
+                        padding: 12px 20px;
+                        display: inline-block;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        color: #ccc;
+                      "
+                      type="text"
+                      name="code"
+                      class="form-control"
+                      value=""
+                      required=""
+                      autofocus
+                    />
+
+                    <br />
+
+                    <center>
+                      <button class="notify-btn1" onclick="showNotification1()">
+                        Submit
+                      </button>
+                    </center>
+                  </p>
+                </form>
+
+                <button class="close-btn1" onclick="closeNotification1()">
+                  Close
+                </button>
+              </div>
+            </div>
+
+            <script>
+              function showNotification1() {
+                document.getElementById("notificationOverlay1").style.display =
+                  "flex";
+              }
+
+              function closeNotification1() {
+                document.getElementById("notificationOverlay1").style.display =
+                  "none";
+              }
+            </script>
+
+            <div class="col-md-3">
+              <!-- Tabs nav -->
+              <div
+                class="nav flex-column nav-pills nav-pills-custom"
+                id="v-pills-tab"
+                role="tablist"
+                aria-orientation="vertical"
+              >
+                <a
+                  class="nav-link mb-3 p-3 shadow active"
+                  id="Crypto-tab"
+                  data-bs-toggle="pill"
+                  href="#Crypto"
+                  role="tab"
+                  aria-controls="Crypto"
+                  aria-selected="true"
+                >
+                  <span class="font-weight-bold small text-uppercase"
+                    >Crypto</span
+                  ></a
+                >
+                <a
+                  class="nav-link mb-3 p-3 shadow"
+                  id="BankTransfer-tab"
+                  data-bs-toggle="pill"
+                  href="#BankTransfer"
+                  role="tab"
+                  aria-controls="BankTransfer"
+                  aria-selected="false"
+                >
+                  <span class="font-weight-bold small text-uppercase"
+                    >Bank Transfer</span
+                  ></a
+                >
+                <a
+                  class="nav-link mb-3 p-3 shadow"
+                  id="Paypal-tab"
+                  data-bs-toggle="pill"
+                  href="#Paypal"
+                  role="tab"
+                  aria-controls="Paypal"
+                  aria-selected="false"
+                >
+                  <span class="font-weight-bold small text-uppercase"
+                    >Paypal</span
+                  ></a
+                >
+                <a
+                  class="nav-link mb-3 p-3 shadow"
+                  id="Skrill-tab"
+                  data-bs-toggle="pill"
+                  href="#Skrill"
+                  role="tab"
+                  aria-controls="Skrill"
+                  aria-selected="false"
+                >
+                  <span class="font-weight-bold small text-uppercase"
+                    >Skrill</span
+                  ></a
+                >
+              </div>
+            </div>
+            <div class="col-md-9">
+              <!-- Tabs content -->
+              <div class="tab-content" id="v-pills-tabContent">
+                <div
+                  class="tab-pane fade shadow rounded-3 bg-tab show active p-4"
+                  id="Crypto"
+                  role="tabpanel"
+                  aria-labelledby="Crypto-tab"
+                >
+                  <div class="crypto_with with">
+                    <h4 class="main-content-label mb-3 text-white">
+                      Crypto Withdrawal
+                    </h4>
+                    <hr />
+                    <form action="/withdrawalrequest" method="post" id="withdrawalForm">
+                      <!-- refactor code to show error from client side logic -->
+                      <% if (error) { %>
+                      <div class="alert alert-danger"><%= error %></div>
+                      <% } %>
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0">Asset</label>
+                        <select
+                          name="wallet"
+                          class="form-control method1 bg-transparent text-white form-select"
+                          style="border: none !important"
+                          required
+                        >
+                          <option balance="0" value="BTC">BTC</option>
+                          <option balance="0" value="ETH">ETH</option>
+                          <option balance="0" value="USDT">USDT</option>
+                          <option balance="0" value="XRP">XRP</option>
+                          <option balance="0" value="SOL">SOL</option>
+                          <option balance="0" value="BNB">BNB</option>
+                          <option balance="0" value="DOGE">DOGE</option>
+                          <option balance="0" value="USDC">USDC</option>
+                          <option balance="0" value="PLSX">PLSX</option>
+
+                          <option balance="0" value="AERGO">AERGO</option>
+                          <option balance="0" value="APED">APED</option>
+                          <option balance="0" value="AAVE">AAVE</option>
+                          <option balance="0" value="FIT">FIT</option>
+                        </select>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0"
+                          >Amount
+                          <!--- <span class="symbol"></span> -->
+                        </label>
+                        <input
+                          type="number"
+                          name="amount"
+                          id="withdraw-amount"
+                          class="form-control mb-1 w_amount"
+                          placeholder="0.0001"
+                          step="any"
+                          required
+                        />
+                        <p class="mb-0 text-danger error fs-7"></p>
+                        <label for="" class="mb-0"
+                          >Balance: <%= asset.total_balance.toLocaleString('en-US')%>
+                          <span class="balance"> </span
+                        ></label>
+                        
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0 withname"
+                          ><span class="symbol"></span> Address</label
+                        >
+                        <input type="
+                        text"
+                        hidden
+                          name="walletbalance"
+                          id="walletbalance"
+                          value="<%= asset.total_balance %>"
+                          class="form-control mb-1 w_amount"
+                          required
+                        />
+                        <input
+                          type="text"
+                          name="address"
+                          id="walletaddress"
+                          placeholder="0x1234567890abcdef1234567890abcdef12345678"
+                          class="form-control"
+                          required
+                        />
+
+                        <input
+                          type="hidden"
+                          name="username"
+                          value="<%= user.username %>"
+                          class="form-control"
+                          required
+                        />
+                        <input
+                          type="hidden"
+                          name="method"
+                          value="Crypto"
+                          class="form-control"
+                          required
+                        />
+                      </div>
+                      <p class="mb-0 text-danger error2 fs-7"></p>
+                      <div class="d-flex justify-content-center mt-3">
+                        <button
+                          type="submit"
+                          name="submitButton"
+                          id="withdraw-button"
+                          class="btn btn-primary fw-bold text-white p-2 fs-6 submit_with"
+                          style="width: 300px"
+                        >
+                          Withdraw
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <div
+                  class="tab-pane fade shadow rounded-3 bg-tab p-4"
+                  id="BankTransfer"
+                  role="tabpanel"
+                  aria-labelledby="BankTransfer-tab"
+                >
+                  <div class="bank_with with">
+                    <h4 class="main-content-label mb-3 text-white">
+                      Bank Withdrawal
+                    </h4>
+                    <form action="/withdrawalrequest" method="post">
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0">Amount </label>
+                        <input
+                          type="number"
+                          name="amount"
+                          class="form-control mb-1 w_amount"
+                          placeholder="0.001"
+                          step="any"
+                          required
+                        />
+                        <label for="" class="mb-0">Balance:</label>
+                        <%= asset.total_balance.toLocaleString('en-US')%>
+                        <p class="mb-0 text-danger error fs-7"></p>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0">Bank Name</label>
+                        <input
+                          type="text"
+                          name="bank_name"
+                          class="form-control"
+                          placeholder="Chase Bank"
+                          required
+                        />
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0">Account Name</label>
+                        <input
+                          type="text"
+                          name="acc_name"
+                          class="form-control"
+                          placeholder="John Deo"
+                          required
+                        />
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0">Account Number</label>
+                        <input
+                          type="number"
+                          name="acc_no"
+                          class="form-control"
+                          placeholder="29456783"
+                          required
+                        />
+                      </div>
+
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0"> Routing Number</label>
+                        <input
+                          type="number"
+                          name="routing_no"
+                          class="form-control"
+                          placeholder="121000248"
+                          required
+                        />
+                      </div>
+
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0">Swift Code</label>
+                        <input
+                          type="text"
+                          name="swift_no"
+                          class="form-control"
+                          placeholder="WFBIUS6S"
+                          required
+                        />
+                      </div>
+
+                      <input
+                        type="hidden"
+                        name="username"
+                        value="<%= user.username %>"
+                        class="form-control"
+                        required
+                      />
+                      <input
+                        type="hidden"
+                        name="method"
+                        value="Bank Transfer"
+                        class="form-control"
+                        required
+                      />
+
+                      <!-- hidden balance for client-side validation -->
+                      <input type="hidden" id="bank-walletbalance" name="walletbalance" value="<%= asset.total_balance %>">
+                      <div class="d-flex justify-content-center mt-3">
+                        <button
+                          type="submit"
+                          id="bank-withdraw-button"
+                          name="submitButton"
+                          class="btn btn-primary fw-bold text-white p-2 fs-6 submit_with"
+                          style="width: 300px"
+                        >
+                          Withdraw
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div
+                  class="tab-pane fade shadow rounded-3 bg-tab p-4"
+                  id="Paypal"
+                  role="tabpanel"
+                  aria-labelledby="Paypal-tab"
+                >
+                  <div class="paypal_with with">
+                    <h4 class="main-content-label mb-3 text-white">
+                      Paypal Withdrawal
+                    </h4>
+                    <form action="/withdrawalrequest" method="post">
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0"
+                          >Amount - <span class="symbol">USD</span></label
+                        >
+                        <input
+                          type="number"
+                          name="amount"
+                          class="form-control mb-1 w_amount"
+                          placeholder="0.001"
+                          step="any"
+                          required
+                        />
+                        <label for="" class="mb-0"
+                          >Balance: <%= asset.total_balance.toLocaleString('en-US')%>
+                          </label
+                        >
+                        <p class="mb-0 text-danger error fs-7"></p>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0">Paypal Address</label>
+                        <input
+                          type="text"
+                          name="paypal_address"
+                          class="form-control"
+                          placeholder="you@paypal.com"
+                          required
+                        />
+                      </div>
+
+                      <input
+                        type="hidden"
+                        name="username"
+                        value="<%= user.username %>"
+                        class="form-control"
+                        required
+                      />
+                      <input
+                        type="hidden"
+                        name="method"
+                        value="Paypal"
+                        class="form-control"
+                        required
+                      />
+                      <input type="hidden" id="paypal-walletbalance" name="walletbalance" value="<%= asset.total_balance %>">
+                      <div class="d-flex justify-content-center mt-3">
+                        <button
+                          type="submit"
+                          id="paypal-withdraw-button"
+                          name="submitButton"
+                          class="btn btn-primary fw-bold text-white p-2 fs-6 submit_with"
+                          style="width: 300px"
+                        >
+                          Withdraw
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div
+                  class="tab-pane fade shadow rounded-3 bg-tab p-4"
+                  id="Skrill"
+                  role="tabpanel"
+                  aria-labelledby="Skrill-tab"
+                >
+                  <div class="skrill_with with">
+                    <h4 class="main-content-label mb-3 text-white">
+                      Skrill Withdrawal
+                    </h4>
+                    <form action="/withdrawalrequest" method="post">
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0"
+                          >Amount - <span class="symbol">USD</span></label
+                        >
+                        <input
+                          type="number"
+                          name="amount"
+                          class="form-control mb-1 w_amount"
+                          placeholder="0.001"
+                          step="any"
+                          required
+                        />
+                        <p class="mb-0 text-danger error fs-7"></p>
+                        <label for="" class="mb-0"
+                          >Balance: <%= asset.total_balance.toLocaleString('en-US') %>
+                        </label>
+                        
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="" class="mb-0">Skrill Address</label>
+                        <input
+                          type="text"
+                          name="skrill_address"
+                          class="form-control"
+                          placeholder="you@skrill.com"
+                          required
+                        />
+                      </div>
+
+                      <input
+                        type="hidden"
+                        name="username"
+                        value="<%= user.username %>"
+                        class="form-control"
+                        required
+                      />
+                      <input
+                        type="hidden"
+                        name="method"
+                        value="Skrill"
+                        class="form-control"
+                        required
+                      />
+                      <input type="hidden" id="skrill-walletbalance" name="walletbalance" value="<%= asset.total_balance %>">
+                      <div class="d-flex justify-content-center mt-3">
+                        <button
+                          type="submit"
+                          id="skrill-withdraw-button"
+                          name="btn_skrill"
+                          class="btn btn-primary fw-bold text-white p-2 fs-6 submit_with"
+                          style="width: 300px"
+                        >
+                          Withdraw
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card custom-card">
+            <div class="card-body">
+              <h4 class="main-content-label mb-3 text-white center">
+                <center>Withdrawal History</center>
+              </h4>
+              <hr />
+              <div class="table-responsive">
+                <table
+                  class="table table-borderless table-striped table-hover text-nowrap text-md-nowrap table-hover mg-b-0"
+                >
+                  <thead>
+                    <tr>
+                      <th><center>ID</center></th>
+                      <th><center>Type</center></th>
+                      <th><center>Amount</center></th>
+                      <th><center>Method</center></th>
+                      <th><center>Date</center></th>
+                      <th><center>Status</center></th>
+                    </tr>
+                    <thead></thead>
+                    <tbody>
+                      <!-- <tr>
+                                            <td colspan="8" class="text-center h6">No Recent Withdrawal</td>
+                                        </tr> -->
+                    </tbody>
+
+                    <script>
+                      async function loadWithdrawals() {
+                        try {
+                          const res = await fetch("/api/withdrawals", {
+                            headers: { Accept: "application/json" },
+                          });
+
+                          if (!res.ok)
+                            throw new Error("Failed to load withdrawals");
+                          const body = await res.json();
+                          if (!body.success)
+                            throw new Error(body.message || "Failed");
+                          const tbody = document.querySelector("table tbody");
+                          if (!tbody)
+                            return console.error(
+                              "Withdrawals table body not found"
+                            );
+                          tbody.innerHTML = "";
+                          if (body.withdrawals.length === 0) {
+                            const tbody = document.querySelector("table tbody");
+                            if (!tbody)
+                              return console.error(
+                                "Withdrawals table body not found"
+                              );
+                            tbody.innerHTML =
+                              '<br><tr><td colspan="6" class="text-center h6">No Recent Withdrawals</td></tr>';
+                          }
+                          body.withdrawals.forEach((d) => {
+                            const tr = document.createElement("tr");
+                            tr.innerHTML = `
+                    <td><center>${
+                      d.withdrawaltransactionid || d.id
+                    }</center></td>
+                    <td><center>${d.withdrawaltype || ""}</center></td>
+                    <td><center>$ ${Number(d.amount).toFixed(2)}</center></td>
+                    <td><center>${d.withdrawalmethod || ""}</center></td>
+                    <td><center>${d.withdrawaldate}</center></td>
+                    <td><center>${d.withdrawalstatus || ""}</center></td>`;
+                            tbody.appendChild(tr);
+                          });
+                        } catch (err) {
+                          console.error("Could not load withdrawals:", err);
+                        }
+                      }
+                      document.addEventListener(
+                        "DOMContentLoaded",
+                        loadWithdrawals
+                      );
+                    </script>
+
+                    <script></script>
+
+                    <!-- Main Footer -->
+
+
+
+        <script>
+$(document).on('click', '#withdraw-button', function (e) {
+     e.preventDefault();
+
+    // read values and coerce to numbers
+    const amountVal = $("#withdraw-amount").val();
+    const amount = parseFloat(amountVal || '0');
+    const walletbalance = parseFloat($("#walletbalance").val() || '0');
+    const walletaddress = $("#walletaddress").val() ? $("#walletaddress").val().trim() : '';
+
+    if (!amount || isNaN(amount) || amount <= 0) {
+        $('.error').text('Invalid amount');
+      return false;
+    }
+    if (!walletaddress) {
+      $('.error2').text('Enter wallet address');
+      return false;
+    }
+    if (amount < 10) {
+       $('.error').text('Minimum amount is $10');
+      return false;
+    }
+    if (amount > walletbalance) {
+       $('.error').text('Insufficient Funds!');
+      return false;
+    }
+
+    // store the originating form so modal can submit it after OTP
+    window.pendingWithdrawalForm = $(this).closest('form');
+    $("#qrcodemodal").modal('show'); 
+  });
+        </script>
+
+        <script>
+// Bank Transfer validation handler
+$(document).on('click', '#bank-withdraw-button', function (e) {
+  e.preventDefault();
+  const amount = parseFloat($("#bank-withdraw-button").closest('form').find('input[name="amount"]').val());
+  const walletbalance = parseFloat($("#bank-walletbalance").val());
+  const bankName = $("#bank-withdraw-button").closest('form').find('input[name="bank_name"]').val();
+  const accName = $("#bank-withdraw-button").closest('form').find('input[name="acc_name"]').val();
+  const accNo = $("#bank-withdraw-button").closest('form').find('input[name="acc_no"]').val();
+
+  if (!amount || isNaN(amount)) {
+    $('.error').text('Invalid amount');
+    return false;
+  }
+  if (amount < 10) {
+    $('.error').text('Minimum amount is $10');
+    return false;
+  }
+  if (amount > walletbalance) {
+    $('.error').text('Insufficient Funds!');
+    return false;
+  }
+  if (!bankName || !accName || !accNo) {
+    $('.error').text('Please complete bank details');
+    return false;
+  }
+  // all good - store form then show modal
+  window.pendingWithdrawalForm = $(this).closest('form');
+  $("#qrcodemodal").modal('show');
+});
+
+// Paypal validation handler
+$(document).on('click', '#paypal-withdraw-button', function (e) {
+  e.preventDefault();
+  const amount = parseFloat($("#paypal-withdraw-button").closest('form').find('input[name="amount"]').val());
+  const walletbalance = parseFloat($("#paypal-walletbalance").val());
+  const paypalAddress = $("#paypal-withdraw-button").closest('form').find('input[name="paypal_address"]').val();
+
+  if (!amount || isNaN(amount)) {
+    $('.error').text('Invalid amount');
+    return false;
+  }
+  if (amount < 10) {
+    $('.error').text('Minimum amount is $10');
+    return false;
+  }
+  if (amount > walletbalance) {
+    $('.error').text('Insufficient Funds!');
+    return false;
+  }
+  if (!paypalAddress) {
+    $('.error').text('Enter Paypal address');
+    return false;
+  }
+  window.pendingWithdrawalForm = $(this).closest('form');
+  $("#qrcodemodal").modal('show');
+});
+
+// Skrill validation handler
+$(document).on('click', '#skrill-withdraw-button', function (e) {
+  e.preventDefault();
+  const amount = parseFloat($("#skrill-withdraw-button").closest('form').find('input[name="amount"]').val());
+  const walletbalance = parseFloat($("#skrill-walletbalance").val());
+  const skrillAddress = $("#skrill-withdraw-button").closest('form').find('input[name="skrill_address"]').val();
+
+  if (!amount || isNaN(amount)) {
+    $('.error').text('Invalid amount');
+    return false;
+  }
+  if (amount < 10) {
+    $('.error').text('Minimum amount is $10');
+    return false;
+  }
+  if (amount > walletbalance) {
+    $('.error').text('Insufficient Funds!');
+    return false;
+  }
+  if (!skrillAddress) {
+    $('.error').text('Enter Skrill address');
+    return false;
+  }
+  window.pendingWithdrawalForm = $(this).closest('form');
+  $("#qrcodemodal").modal('show');
+});
+
+        </script>
+
+
+<!-- Modal start-->
+                        <div id="qrcodemodal" class="modal slide" role="dialog" data-backdrop="static"
+                            data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+                            <div class="modal-dialog pt-5">
+                                <!-- Modal content-->
+                                <div class="modal-content mt-5 p-4" style="border-radius: 1rem;">
+                                    
+                                    <div class="col-md-12 col-lg-12">
+                    
+                                       
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <h4 class="main-content-label mb-3 text-white">Withdrawal Code</h4>
+                                <p class="mb-3 text-white">
+                                  Kindly provide your withdrawal code
+                                </p>
+                                <hr>
+                                
+                                
+                               <!-- {{-- <form action=""> --}} -->
+
+                                <div class="form-group mb-3">
+                                    <label for="" class="mb-0">Withdrawal Code</label>
+                                     <p class="mb-0 fs-7 text-danger" id="errorS" > </p>
+                                     <p class="mb-0 fs-7 text-success" id="successS" > </p>
+                                    <input type="number" class="form-control" name="userwithdrawalotp" id="userwithdrawalotp" placeholder="Enter Withdrawal Code" required>
+                                </div>
+                               
+
+                                 <input type="hidden" name="withdrawalusername" value="<%=user.username%>" id="withdrawalotp" class="form-control" >
+
+                                 
+                                    <center>  
+                                    <button  class="btn btn-primary" style="color:#fff" id="submitBTNConfirmOTP"> Confirm Code </button> 
+
+                                  <button  class="btn btn-primary" style="color:#fff" id="r22" disabled hidden> 
+                                    <div class="spinner-border" role="status">
+                                              <span class="sr-only">Loading...</span>
+                                          </div> 
+                                  </button> 
+                                    
+                                    </center>
+                            <!-- {{-- </form> --}} -->
+                            
+                                  </div>
+                        </div>
+                   
+
+                    
+                                     </div>
+            
+                                </div>
+                              
+     
+                            </div>
+                        </div>
+
+
+                    <script>
+                      // Bind modal confirm button
+                      $(document).ready(function () {
+                        $(document).on('click', '#submitBTNConfirmOTP', function (e) {
+                          e.preventDefault();
+                          checkValue();
+                        });
+                      });
+
+
+                        // Validate OTP and submit pending form
+
+                      function checkValue() {
+                        $('#errorS').text('');
+                        const codeNumber = $('#userwithdrawalotp').val().trim();
+                        if (!codeNumber) {
+                          $('#errorS').text('Please enter your withdrawal code');
+                          return false;
+                        }
+                        // require 3-6 digit numeric OTP
+                        if (!/^\d{3,6}$/.test(codeNumber)) {
+                          $('#errorS').text('Invalid withdrawal code');
+                          return false;
+                        }
+
+                        const username = $('#withdrawalotp').val() || '';
+                        const dataToSend = { otp: codeNumber };
+
+                        // show spinner / disable button
+                        $('#submitBTNConfirmOTP').prop('disabled', true);
+                        $('#r22').prop('hidden', false).prop('disabled', true);
+
+                        // Verify OTP first, then submit the pending form on success
+                        fetch('/api/checkOtp', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                          body: JSON.stringify(dataToSend)
+                        })
+                        .then(response =>  response.json())
+                        .then(data => {
+                          if (data.error) {
+                            $('#errorS').text(data.error || data.message || 'OTP verification failed');
+                            $('#submitBTNConfirmOTP').prop('disabled', false);
+                            $('#r22').prop('hidden', true).prop('disabled', false);
+                            return;
+                          }
+
+                          // OTP verified successfully
+                          else if (data.success) {
+                            $('#successS').text('Code verified successfully, Kindly wait for confirmation !');
+                          document.getElementById('withdrawalForm').submit();
+                            // $('#qrcodemodal').modal('hide');
+                          
+                          }
+                          // $('#successS').text('Payment Successful, pending withdrawal');
+
+                          // Find pending form (stored when opening modal)
+                          const pending = window.pendingWithdrawalForm && window.pendingWithdrawalForm.length ? window.pendingWithdrawalForm : null;
+                          const form = pending || $('form[action="/withdrawalrequest"]').first();
+                          if (!form || !form.length) {
+                            $('#errorS').text('Could not find withdrawal form to submit');
+                            $('#submitBTNConfirmOTP').prop('disabled', false);
+                            $('#r22').prop('hidden', true).prop('disabled', false);
+                            return;
+                          }
+                        });
+
+                        return true;
+                      }
+                    </script>
+                    <%- include('../partials/footer') %>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

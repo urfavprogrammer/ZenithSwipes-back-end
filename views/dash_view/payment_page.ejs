@@ -1,0 +1,200 @@
+<%-include("../partials/header.ejs") %>
+
+
+<div class="main-content side-content pt-0">
+    <div class="main-container container-fluid">
+        <div class="inner-body">
+            <div id="mobileshow" class="see"></div>
+            <div class="sees hide-mobile"></div>
+            <div class="mb-4 d-flex align-items-center">
+                <a href="/account/user/deposits" class="mb-0 fw-bold fs-6 text-white me-1">Deposits &nbsp;</a>
+                <i class="fa fa-angle-right"></i>
+                <p class="mb-0 ms-1"> &nbsp;Proceed to Deposit</p>
+            </div>
+            
+
+         
+                                                          <!--Row-->
+             <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="fs-5 fw-bold mb-0 text-white"><center>Payment Details</center></h3><br>
+                                <p class="mb-3 text-white">
+                                  Kindly proceed to make your deposit and upload your proof of payment once done.
+                                </p>
+
+                                <br>
+                                <ul>
+
+                                    <li>
+                                        <span class="float-left" style="color:#fff; font-weight:bold;">Amount: </span>
+                                        <span class="float-right" style="color:#fff; font-weight:bold;"> <%=user.currency %> <%= deposit.amount %></span>
+                                    </li>
+
+                                    <br>
+                                    <li>
+                                        <span class="float-left" style="color:#fff; font-weight:bold;">Method: </span>
+                                        <span class="float-right" style="color:#fff; font-weight:bold;"> <%= deposit.depositmethod %></span>
+                                    </li>
+
+                                </ul>
+                                
+<br>
+<br>
+                              <label class="col-form-label py-0 mt"> Address:</label>
+                                <div class="form-control d-flex align-items-center justify-content-between mb-2"
+                                    style="padding-right: 10px !important;">
+
+                                    <input id="HTML" type="text" value="XXXXXXXXXXXXXX" class="deposit_address ms-2 w-75 data" required readonly>
+                                    <button  id="HTMLButton" type="button"
+                                        class="btn bg-main btn-hover-effect px-2 fw-bold text-white">Copy</button>
+                    
+                                </div>
+                                <p class="text-primary text-start fw-bold" data-bs-toggle="modal" data-bs-target="#qrcodemodal">
+                                    Tap to upload
+                                </p> 
+
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <!-- Modal start-->
+                        <div id="qrcodemodal" class="modal slide" role="dialog" data-backdrop="static"
+                            data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+                            <div class="modal-dialog pt-5">
+                                <!-- Modal content-->
+                                <div class="modal-content mt-5 p-4" style="border-radius: 1rem;">
+                                    
+                                    <div class="col-md-12 col-lg-12">
+                    
+                                        <form method="post" action="/upload_deposit_proof" enctype="multipart/form-data">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <h4 class="main-content-label mb-3 text-white">Upload Payment Proof</h4>
+                                <p class="mb-3 text-white">Kindly upload your payment proof after deposit for approval.
+                                </p>
+                                <hr>
+
+
+                                <input type="hidden" class="form-control" name="username" value="<%= user.username %>" />
+
+
+                                <div class="form-group mb-3">
+                                    <label for="" class="mb-0">Payment Photo</label>
+                                    <input type="file" name="document" class="form-control" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="" class="mb-0">Coin: <%= deposit.depositmethod %></label>
+                                    <select  class="form-control method form-select">
+                                        <option value="<%= deposit.method %>"><%= deposit.depositmethod %></option>
+                                        <!-- <option value="BTC">
+                                            BTC                                        </option>
+                                                                                <option value="ETH">
+                                            ETH                                        </option>
+                                                                                <option value="USDT">
+                                            USDT                                        </option>
+                                                                                <option value="LTC">
+                                            LTC                                        </option>
+                                                                                <option value="TRX">
+                                            TRX                                        </option>
+                                                                                <option value="DOGECOIN">
+                                            DOGECOIN                                        </option>
+                                                                                <option value="XRP">
+                                            XRP                                        </option> -->
+                                                                            </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="" class="mb-0">Amount Sent&nbsp; </label> <%= deposit.amount %>
+                                    <!-- <input type="number" class="form-control" required> -->
+                                </div>
+                        
+                                    
+                                    <center>  <button type="submit" name="submit" class="btn btn-primary" style="background-color:#0094ff; color:#fff">Upload Proof</button> </center>
+                            </div>
+                        </div>
+                    </form>
+
+
+                                     </div>
+            
+                                </div>
+                              
+     
+                            </div>
+                        </div>
+                      
+
+
+
+
+
+
+
+    </div>
+
+</div>
+<!-- /.content-wrapper -->
+<!-- End Main Content-->
+
+                                           
+
+
+
+
+   
+
+
+
+
+
+
+
+                  
+<script>
+let HTML = document.getElementById("HTML");
+let HTMLButton = document.getElementById("HTMLButton");
+
+HTMLButton.onclick = function() {
+  HTML.select();
+  document.execCommand("copy");
+  HTMLButton.innerText = "Copied!"
+}
+</script>
+<script>
+
+  const paymentAddresses = {
+    BTC: "<%= payment.btc %>",
+    ETH: "<%= payment.eth %>",
+    USDT: "<%= payment.usdt %>",
+    LTC: "<%= payment.ltc %>",
+    TRX: "<%= payment.trx %>",
+    DOGE: "<%= payment.doge %>",
+    XRP: "<%= payment.xrp %>"
+  };
+  if ("<%= deposit.depositmethod %>" == "BTC") {
+    document.getElementById('HTML').value = paymentAddresses.BTC;
+  } if ("<%= deposit.depositmethod %>" == "ETH") {
+    document.getElementById('HTML').value = paymentAddresses.ETH;
+  }
+    if ("<%= deposit.depositmethod %>" == "USDT") {
+        document.getElementById('HTML').value = paymentAddresses.USDT;
+    } if ("<%= deposit.depositmethod %>" == "LTC") {
+        document.getElementById('HTML').value = paymentAddresses.LTC;
+    } if ("<%= deposit.depositmethod %>" == "TRX") {
+        document.getElementById('HTML').value = paymentAddresses.TRX;
+    } if ("<%= deposit.depositmethod %>" == "DOGE") {
+        document.getElementById('HTML').value = paymentAddresses.DOGE;
+    } if ("<%= deposit.depositmethod %>" == "XRP") {
+        document.getElementById('HTML').value = paymentAddresses.XRP;
+    }   
+</script>
+
+
+
+<%-include("../partials/footer.ejs") %>

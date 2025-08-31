@@ -1,0 +1,142 @@
+<%-include('../../adminlayout/partials/header')%>
+<body>
+  <div class="container-scroller">
+    <%-include('../../adminlayout/partials/navbar') %>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <%-include('../../adminlayout/partials/topbar') %>
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">All Approved Withdrawals</h4>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>
+                            <!-- <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                <i class="input-helper"></i></label>
+                              </div> -->
+                          </th>
+                          <th>Transaction ID</th>
+                          <th>User Name</th>
+                          <th>Withdrawal Amount</th>
+                          <th>Method of Payment</th>
+                          <th>Payment Status</th>
+                          <th>Date of Withdrawal</th>
+                          <th colspan="3">Operations</th>
+                          <!-- <th> Decline </th>
+                            <th> Delete </th> -->
+                          <!-- <th> Payment Status </th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% if (Array.isArray(withdrawals) && withdrawals.length)
+                        { %> <% withdrawals.forEach(function(w) { %>
+                        <tr>
+                          <td></td>
+                          <td style="color: rgb(146, 88, 88)">
+                            <%= w.withdrawaltransactionid.slice(0, 12) || '—' %>
+                          </td>
+                          <td><%= w.username || '—' %></td>
+                          <td><%= w.amount || '—' %></td>
+                          <td><%= w.withdrawalmethod || '—' %></td>
+                          <td><%= w.withdrawalstatus || '—' %></td>
+                          <td>
+                            <%= (w.created_at ||
+                            w.createdAt).toLocaleDateString() || '—' %>
+                          </td>
+                          <td>
+                            <form
+                              action="/admin/withdraw/delete"
+                              method="post"
+                              class="delete-deposit-form"
+                            >
+                              <input
+                                type="hidden"
+                                name="id"
+                                value="<%= w.id %>"
+                              />
+                              <input
+                                type="hidden"
+                                name="withdrawid"
+                                value="<%= w.withdrawaltransactionid %>"
+                              />
+                              <input
+                                type="hidden"
+                                name="username"
+                                value="<%= w.username %>"
+                              />
+                              <input
+                                type="hidden"
+                                name="amount"
+                                value="<%= w.amount %>"
+                              />
+                              <input type="hidden" name="routingpage" value="approved_withdrawals">
+
+                              <button
+                                type="submit"
+                                class="btn btn-inverse-danger btn-fw"
+                              >
+                                Delete
+                              </button>
+                            </form>
+                          </td>
+                        </tr>
+                        <% }) %> <% } else { %>
+                        <tr>
+                          <td colspan="7" class="text-center">
+                            No pending withdrawals found
+                          </td>
+                        </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% if (error) { %>
+      <div class="alert alert-danger"><%= error %></div>
+      <% } %> <% if (errors && errors.length) { %>
+      <div class="alert alert-danger">
+        <ul>
+          <% errors.forEach(function(e){ %>
+          <li><%= e %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <% } %> <% if (success) { %>
+      <div class="alert alert-success">Deposit Successfully Declined</div>
+      <% } %>
+
+      <div
+        id="admin-flash"
+        style="
+          position: fixed;
+          right: 20px;
+          bottom: 20px;
+          z-index: 9999;
+          display: none;
+        "
+      >
+        <div
+          id="admin-flash-msg"
+          class="alert alert-success"
+          role="alert"
+        ></div>
+      </div>
+    </div>
+  </div>
+</body>
+  <%-include('../../adminlayout/partials/footer') %>
+

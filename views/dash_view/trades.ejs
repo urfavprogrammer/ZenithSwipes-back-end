@@ -1,0 +1,179 @@
+        <%- include("../partials/header.ejs") %>        
+
+<div class="main-content side-content pt-0">
+    <div class="main-container container-fluid">
+        <div class="inner-body">
+            <div id="mobileshow" class="see"></div>
+            <div class="sees hide-mobile"></div>
+            <!--Row-->
+            
+                                                                                                  
+            <div class="row row-sm mt-4">
+                <div class="col-12">
+                    <div class="card custom-card overflow-hidden">
+                        <div class="card-header border-bottom">
+                            <div>
+                                <h3 class="card-title tx-18"><label class="main-content-label tx-15"> Trading Activities </label></h3>
+                            </div>
+                        </div>
+                        <div class="card-body pb-2">
+                            <div class="table-responsive">
+                                <table
+                                    class="table table-borderless table-striped table-hover text-nowrap text-md-nowrap table-hover mg-b-0">
+                                    <tbody>
+                                        <tr>
+                                       <th style='text-align:center'>ID</th>
+                                          
+                                            <th style='text-align:center'> Assets </th>
+                                            <th style='text-align:center'>Amount</th>
+                                            
+                                            <th style='text-align:center'>Action</th>
+                                            
+                                            
+                                             
+                                              <th style='text-align:center'>Duration</th>
+                                             
+                                            <th style='text-align:center'>Result</th>
+                                            
+                                            <th style='text-align:center'>Profit/Loss</th>
+                                             
+                                             
+                                             <th style='text-align:center'>Leverage</th>
+                                            
+                                             
+                                            
+                                            <th style='text-align:center'>Status</th>
+                                            
+                                            <th style='text-align:center'> Type </th>
+                                            
+                                            <th style='text-align:center'>Trade Time</th>
+                                               
+                                           
+                                        </tr>
+                                                                              
+                                       
+                                
+<style>
+.section {
+	width: 308px;
+}
+
+
+@-webkit-keyframes gradientMove {
+	0% {
+		background-position: 0px 0px;
+	}
+	100% {
+		background-position: 100px 0px;
+	}
+}
+
+@-webkit-keyframes reload {
+	0% {
+		width: 20px;
+	}
+	95% {
+		width: 300px;
+	}
+	100% {
+		width: 20px;
+	}
+}
+
+.progress-bar1 {
+	width: 100%;
+	background: #000;
+	padding: 3px;
+	border-radius: 50px;
+	box-shadow: inset 0px 1px 1px 0px black, 0px 1px 1px 0px;
+}
+
+.polyfill {
+	width: 300px;
+	height: 25px;
+	background: repeating-linear-gradient(
+  45deg,  /* Change angle if needed */
+  green 0%,
+  green 3%, 
+  black 0%, 
+  black 20%
+);
+
+	background-size: 35px 25px;
+	border-radius: 50px;
+	box-shadow: inset 0px 1px 3px 0px #F2F2F2;
+	-webkit-animation-name: gradientMove, reload;
+	-webkit-animation-duration: .10s, 15s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-fill-mode: both;
+	-webkit-animation-timing-function: linear;
+}
+</style>                                                                  
+                                                                              
+                                                                              
+                                                                              
+                                                   
+                   
+   
+   
+   
+   <tr>
+                                            <td colspan='12' class='text-center fw-bold'> You have not placed any trade.
+                                            </td>
+                                        </tr>
+
+ 
+
+ 
+   
+   
+  
+                    
+                                                                                 
+                                                                            </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Row -->
+            </div>
+        </div>
+    </div>
+   <script>
+function generateNoise(opacity) {
+	if (!!!document.createElement('canvas').getContext) {  
+		return false;  
+	}
+	
+	var canvas = document.createElement("canvas"),  
+	ctx = canvas.getContext('2d'),  
+	x, y,  
+	number,  
+	opacity = opacity || .2;  
+	
+	canvas.width = 250;
+	canvas.height = 250;
+	
+	for(x = 0; x < canvas.width; x++) {  
+		for(y = 0; y < canvas.height; y++) {  
+		    number = Math.floor(Math.random() * 40);    
+		    ctx.fillStyle = "rgba(" + number + "," + number + "," + number + "," + opacity + ")";  
+		    ctx.fillRect(x, y, 1, 1);
+		}  
+	}
+
+document.body.style.backgroundImage = "url(" + canvas.toDataURL("image/png") + ")"; 
+}
+
+generateNoise(.1);
+</script>
+
+<br><br><br><br>
+
+
+   
+
+ <!-- Main Footer -->
+ 
+  <%-include('../partials/footer')%>

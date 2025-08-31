@@ -1,0 +1,3165 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="main-content side-content pt-0">
+  <div class="main-container container-fluid">
+    <div class="inner-body">
+      <div id="mobileshow" class="see"></div>
+      <div class="sees hide-mobile"></div>
+      <div class="mb-5">
+        <h4 class="fw-bold text-white">Stake</h4>
+        <p class="mb-0">
+          Earn profits from staking and manage your staking history
+        </p>
+
+        <br /><br />
+        <h4 class="fw-bold text-white">Locked Stake</h4>
+
+        <p class="mb-0">
+          <i class="fas fa-lock" style="color: #fff"></i>
+          <span class="info-box-number">
+            <b> &emsp; <%=user.currency %>  <%=asset.total_balance %> </b>
+          </span>
+        </p>
+      </div>
+
+      <div class="container-fluid">
+        <div class="table-responsive">
+            <% if (error) { %>
+            <div class="alert alert-danger"><%= error %></div>
+          <% } %>
+
+          <% if (errors && errors.length) { %>
+            <div class="alert alert-danger"><ul>
+              <% errors.forEach(function(e){ %>
+                <li><%= e %></li>
+              <% }) %>
+            </ul></div>
+          <% } %>
+
+          <% if (success) { %>
+            <div class="alert alert-success">Your Stake has been placed successfully!</div>
+          <% } %>
+
+          <table class="table table-striped">
+            
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Est. APY</th>
+                <th>Duration (days)</th>
+                <th>Amount</th>
+                <!-- <th></th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ACA -->
+              <tr>
+                <td>
+                  <img
+                    src="/svg/aca.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">aca</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp0">9.16</span>%
+
+                      <input
+                        type="hidden"
+                        name="percent"
+                        value="9.16"
+                        class="form-control"
+                      />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_10"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_10"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc0"
+                        value="9.16"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="aca"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_20"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_20"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_30"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_30"
+                        >360</label
+                      >
+
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+
+              <!-- ADA -->
+              <tr>
+                <td>
+                  <img
+                    src="/svg/ada.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">ada</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp1">9.18</span>%
+
+                      <input type="hidden" name="percent" value="9.18" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_11"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_11"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc1"
+                        value="9.18"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="ada"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_21"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_21"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_31"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_31"
+                        >360</label
+                      >
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                   <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                  <td>
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/alpha.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">alpha</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp2">10.7</span>%
+
+                      <input type="hidden" name="percent" value="10.7" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_12"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_12"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc2"
+                        value="10.7"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="alpha"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="160"
+                        name="duration"
+                        id="stake_btn_22"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_22"
+                        >160</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_32"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_32"
+                        >360</label
+                      >
+
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                     <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/avax.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">avax</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp3">15.6</span>%
+                      <input type="hidden" name="percent" value="15.6" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_13"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_13"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc3"
+                        value="15.6"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="avax"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_23"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_23"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_33"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_33"
+                        >360</label
+                      >
+
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/axs.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">axs</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp4">10.41</span>%
+                      <input type="hidden" name="percent" value="10.41" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_14"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_14"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc4"
+                        value="10.41"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="axs"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_24"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_24"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_34"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_34"
+                        >360</label
+                      >
+
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/bnx.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">bnx</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp5">9.14</span>%
+
+                      <input type="hidden" name="percent" value="9.14" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_15"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_15"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc5"
+                        value="9.14"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="bnx"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_25"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_25"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_35"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_35"
+                        >360</label
+                      >
+
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    src="/svg/cake.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">cake</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp7">7.37</span>%
+                      <input type="hidden" name="percent" value="7.37" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_17"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_17"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc7"
+                        value="7.37"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="cake"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_27"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_27"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_37"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_37"
+                        >360</label
+                      >
+                      
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    src="/svg/celo.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">celo</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp9">9.14</span>%
+                      <input type="hidden" name="percent" value="9.14" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_19"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_19"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc9"
+                        value="9.14"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="celo"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_29"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_29"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_39"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_39"
+                        >360</label
+                      >
+                      
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+
+             
+
+              <tr>
+                <td>
+                  <img
+                    src="/svg/coti.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">coti</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp11">7.33</span>%
+                      <input type="hidden" name="percent" value="7.33" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_111"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_111"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc11"
+                        value="7.33"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="coti"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_211"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_211"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_311"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_311"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/ctk.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">ctk</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp12">9.6</span>%
+                      <input type="hidden" name="percent" value="9.6" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_112"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_112"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc12"
+                        value="9.6"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="ctk"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_212"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_212"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_312"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_312"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/dar.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">dar</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp13">9.18</span>%
+                      <input type="hidden" name="percent" value="9.18" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_113"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_113"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc13"
+                        value="9.18"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="dar"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_213"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_213"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_313"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_313"
+                        >360</label
+                      >
+                    
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/dock.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">dock</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp14">11.7</span>%
+                      <input type="hidden" name="percent" value="11.7" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_114"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_114"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc14"
+                        value="11.7"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="dock"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_214"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_214"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_314"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_314"
+                        >360</label
+                      >
+           
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/dot.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">dot</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp15">15</span>%
+                      <input type="hidden" name="percent" value="15" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_115"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_115"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc15"
+                        value="15"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="dot"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_215"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_215"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_315"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_315"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/egld.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">egld</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp16">8.7</span>%
+                      <input type="hidden" name="percent" value="8.7" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_116"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_116"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc16"
+                        value="8.7"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="egld"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_216"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_216"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_316"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_316"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/ern.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">ern</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp17">9.9</span>%
+                      <input type="hidden" name="percent" value="9.9" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_117"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_117"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc17"
+                        value="9.9"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="ern"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_217"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_217"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_317"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_317"
+                        >360</label
+                      >
+                    
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/ez.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">ez</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp18">11.7</span>%
+                      <input type="hidden" name="percent" value="11.7" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_118"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_118"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc18"
+                        value="11.7"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="ez"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_218"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_218"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_318"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_318"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/fil.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">fil</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp19">9.16</span>%
+                      <input type="hidden" name="percent" value="9.16" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_119"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_119"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc19"
+                        value="9.16"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="fil"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_219"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_219"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_319"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_319"
+                        >360</label
+                      >
+                    
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/icp.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">icp</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp20">10.9</span>%
+                      <input type="hidden" name="percent" value="10.9" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_120"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_120"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc20"
+                        value="10.9"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="icp"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_220"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_220"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_320"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_320"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/lit.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">lit</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp21">12.2</span>%
+                      <input type="hidden" name="percent" value="12.2" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_121"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_121"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc21"
+                        value="12.2"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="lit"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_221"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_221"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_321"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_321"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/luna.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">luna</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp22">8.29</span>%
+                      <input type="hidden" name="percent" value="8.29" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_122"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_122"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc22"
+                        value="8.29"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="luna"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_222"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_222"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_322"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_322"
+                        >360</label
+                      >
+                      
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/near.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">near</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp23">8.29</span>%
+                      <input type="hidden" name="percent" value="8.29" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_123"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_123"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc23"
+                        value="8.29"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="near"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_223"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_223"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_323"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_323"
+                        >360</label
+                      >
+                   
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/pnt.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">pnt</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp24">13.8</span>%
+
+                      <input type="hidden" name="percent" value="13.8" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_124"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_124"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc24"
+                        value="13.8"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="pnt"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_224"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_224"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_324"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_324"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/porto.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">porto</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp25">9.35</span>%
+
+                      <input type="hidden" name="percent" value="9.35" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_125"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_125"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc25"
+                        value="9.35"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="porto"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_225"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_225"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_325"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_325"
+                        >360</label
+                      >
+                      
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/ray.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">ray</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp26">10.7</span>%
+                      <input type="hidden" name="percent" value="10.7" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_126"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_126"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc26"
+                        value="10.7"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="ray"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_226"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_226"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_326"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_326"
+                        >360</label
+                      >
+                      
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/sand.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">sand</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp27">13.8</span>%
+                      <input type="hidden" name="percent" value="13.8" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_127"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_127"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc27"
+                        value="13.8"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="sand"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_227"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_227"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_327"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_327"
+                        >360</label
+                      >
+                    
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/sol.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">sol</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp28">8.29</span>%
+                      <input type="hidden" name="percent" value="8.29" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_128"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_128"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc28"
+                        value="8.29"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="sol"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_228"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_228"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_328"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_328"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/stx.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">stx</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp29">9.35</span>%
+                      <input type="hidden" name="percent" value="9.35" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_129"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_129"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc29"
+                        value="9.35"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="stx"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_229"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_229"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_329"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_329"
+                        >360</label
+                      >
+                      
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/tvk.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">tvk</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp30">14.9</span>%
+                      <input type="hidden" name="percent" value="14.9" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_130"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_130"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc30"
+                        value="14.9"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="tvk"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_230"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_230"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_330"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_330"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/vgx.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">vgx</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp31">16</span>%
+                      <input type="hidden" name="percent" value="16" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_131"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_131"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc31"
+                        value="16"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="vgx"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_231"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_231"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_331"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_331"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="/svg/zil.svg"
+                    alt=""
+                    class="crypto-icon"
+                  />&nbsp;&nbsp;<span class="text-uppercase">zil</span>
+                </td>
+                <form action="/stakerequest" class="form-inline" method="post">
+                  <td>
+                    <span class="text-success">
+                      <span class="" id="otp32">9.16</span>%
+
+                      <input type="hidden" name="percent" value="9.16" />
+                    </span>
+                  </td>
+
+                  <td class="">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        value="30"
+                        name="duration"
+                        id="stake_btn_132"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_132"
+                        >30</label
+                      >
+                      <input
+                        type="hidden"
+                        id="otp_perc32"
+                        value="9.16"
+                        class="form-control"
+                      />
+                      <input
+                        type="hidden"
+                        name="currency"
+                        value="zil"
+                        class="form-control"
+                      />
+
+                      <input
+                        type="radio"
+                        value="180"
+                        name="duration"
+                        id="stake_btn_232"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_232"
+                        >180</label
+                      >
+
+                      <input
+                        type="radio"
+                        value="360"
+                        name="duration"
+                        id="stake_btn_332"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary get_percent_btn"
+                        for="stake_btn_332"
+                        >360</label
+                      >
+                     
+                      <!--<div class="" id="new_percent"></div>-->
+                    </div>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      class="form-control"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      name="username"
+                      value="<%= user.username %>"
+                      class="form-control"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-primary text-uppercase"
+                    >
+                      Stake
+                    </button>
+                  </td>
+                </form>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="card custom-card">
+          <div class="card-body">
+            <h4 class="main-content-label mb-3 text-white">Stake History</h4>
+            <div class="table-responsive">
+              <table
+                class="table table-borderless table-striped table-hover text-nowrap text-md-nowrap table-hover mg-b-0"
+              >
+                <thead>
+                  <tr>
+                    <th><center>ID</center></th>
+                    <th><center>Token</center></th>
+                    <th><center>Amount</center></th>
+                    <th><center>Est. APY</center></th>
+                    <th><center>Duration</center></th>
+                    <th><center>Date</center></th>
+                  </tr>
+                </thead>
+
+                <tbody></tbody>
+              </table>
+             
+            </div>
+             <script>
+    async function loadStakes() {
+        try {
+            const res = await fetch('/api/stakes', { headers: { 'Accept': 'application/json' }});
+
+            if (!res.ok) throw new Error('Failed to load stakes');
+            const body = await res.json();
+            if (!body.success) throw new Error(body.message || 'Failed');
+            const tbody = document.querySelectorAll('table tbody');
+            if (!tbody) return console.error('Stakes table body not found');
+
+            tbody.innerHTML = '';
+
+            if (body.stakes.length === 0) {
+                const tbody = document.querySelectorAll('table tbody');
+                if(tbody.length > 1){
+                    let secondTable = tbody[1];
+                    if (!secondTable) return console.error('Stakes table body not found');
+                    secondTable.innerHTML = '<br><tr><td colspan="6" class="text-center h6">No Recent Stakes</td></tr>';
+                }
+            } 
+            if(tbody.length > 1){
+                let secondTable = tbody[1];
+                secondTable.innerHTML = '';
+            body.stakes.forEach(d => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><center>${d.stakeid || d.id}</center></td>
+                    <td><center>${d.staketoken || ''}</center></td>
+                    <td><center><%=user.currency%> ${Number(d.amount).toFixed(2)}</center></td>
+                    <td><center>${d.est_apy || ''}</center></td>
+                    <td><center>${d.stakeduration || ''}</center></td>
+                    <td><center>${d.stakedate || ''}</center></td>`;
+                secondTable.appendChild(tr);
+            });
+        } } catch (err) {
+            console.error('Could not load stakes:', err);
+        }
+    }
+    document.addEventListener('DOMContentLoaded', loadStakes);
+</script>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%-include('../partials/footer')%>

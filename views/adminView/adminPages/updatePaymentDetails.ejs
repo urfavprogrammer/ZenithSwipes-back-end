@@ -1,0 +1,84 @@
+<%-include('../../adminlayout/partials/header')%>
+<body>
+  <div class="container-scroller">
+    <%-include('../../adminlayout/partials/navbar') %>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <%-include('../../adminlayout/partials/topbar') %>
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Update Payment Details</h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin/view_payment_details">View Payment Details</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                 Update Payment Details
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Payment Details</h4>
+                  <p class="card-description">Update Payment Information</p>
+                  <form action="/admin/payment/update_paymentdetails" method="POST" class="forms-sample">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="total_balance">BTC</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="BTC" name="BTC" value="" placeholder="BTC" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="profit">ETH</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="ETH" name="ETH" value="" placeholder="ETH" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="trade_bonus">USDT</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="USDT" name="USDT" value="" placeholder="USDT" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="referal_bonus">LTC</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="LTC" name="LTC" value="" placeholder="LTC" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="total_won">TRX</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="TRX" name="TRX" value="" placeholder="TRX" />
+                      </div>
+                    </div>
+                     <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="total_won">DOGE</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="total_won" name="DOGE" value="" placeholder="DOGE" />
+                      </div>
+                    </div> 
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="total_won">XRP</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="total_won" name="XRP" value="" placeholder="XRP" />
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Update Payment Details</button>
+
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+    <%-include('../../adminlayout/partials/footer') %>

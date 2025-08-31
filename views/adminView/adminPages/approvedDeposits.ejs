@@ -1,0 +1,90 @@
+<%-include('../../adminlayout/partials/header')%>
+  <body>
+    <div class="container-scroller">
+
+      <%-include('../../adminlayout/partials/navbar') %>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+       <%-include('../../adminlayout/partials/topbar') %>
+
+
+
+       <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row ">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">All Approved Deposit</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>
+                              <!-- <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                <i class="input-helper"></i></label>
+                              </div> -->
+
+                            </th>
+                            <th> Transaction ID </th>
+                            <th> User Name </th>
+                            <th> Deposit Amount </th>
+                            <th> Method of Payment </th>
+                            <th> Payment Status </th>
+                            <th> Date of Deposit </th>
+                           
+
+                            <!-- <th> Payment Status </th> -->
+                             
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% if (Array.isArray(deposits) && deposits.length) { %>
+                            <% deposits.forEach(function(d) { %>
+                              <tr>
+                                <td>
+                                </td>
+                                <td style="color: rgb(146, 88, 88);"><%= d.deposittransactionid.slice(0, 12) || '—' %></td>
+                                <td><%= d.username || '—' %></td>
+                                <td><%= d.amount || '—' %></td>
+                                <td><%= d.depositmethod || '—' %></td>
+                                <td><%= d.depositstatus || '—' %></td>
+                                <td><%= (d.created_at || d.createdAt).toLocaleDateString() || '—' %></td>
+                                 <td>
+                                    <form action="/admin/deposit/delete" method="post" class="delete-deposit-form">
+                                        <input type="hidden" name="id" value="<%= d.id %>">
+                                        <input type="hidden" name="depositid" value="<%= d.deposittransactionid %>">
+                                        <input type="hidden" name="username" value="<%= d.username %>">
+                                        <input type="hidden" name="amount" value="<%= d.amount %>">
+                                        <input type="hidden" name="routingpage" value="approved_deposits">
+                                        <button type="submit" class="btn btn-inverse-danger btn-fw">Delete</button>
+                                    </form>
+                                </td>
+                              </tr>
+                            <% }) %>
+                          <% } else { %>
+                            <tr>
+                              <td colspan="7" class="text-center">No registered users found</td>
+                            </tr>
+                          <% } %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+       </div>
+
+
+
+
+
+
+
+       <%-include('../../adminlayout/partials/footer') %>
+

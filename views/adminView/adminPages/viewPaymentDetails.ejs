@@ -1,0 +1,77 @@
+<%-include('../../adminlayout/partials/header')%>
+<body>
+  <div class="container-scroller">
+    <%-include('../../adminlayout/partials/navbar') %>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <%-include('../../adminlayout/partials/topbar') %>
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">View Payment Details</h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin/payment">Edit Payment Details</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                 View Payment Details
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Payment Details</h4>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Currency</th>
+                          <th>Wallet Address</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>BTC</td>
+                          <td><%= payments.btc %></td>
+                        </tr>
+                        <tr>
+                          <td>ETH</td>
+                          <td><%= payments.eth %></td>
+                        </tr>
+                        <tr>
+                          <td>USDT</td>
+                          <td><%= payments.usdt %></td>
+                        </tr>
+                        <tr>
+                          <td>LTC</td>
+                          <td><%= payments.ltc %></td>
+                        </tr>
+                        <tr>
+                          <td>TRX</td>
+                          <td><%= payments.trx %></td>
+                        </tr>
+                        <tr>
+                          <td>DOGE</td>
+                          <td><%= payments.doge %></td>
+                        </tr>
+                        <tr>
+                          <td>XRP</td>
+                          <td><%= payments.xrp %></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<%-include('../../adminlayout/partials/footer') %>

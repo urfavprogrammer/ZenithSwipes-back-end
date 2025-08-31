@@ -1,0 +1,148 @@
+<%-include('../../adminlayout/partials/header')%>
+<body>
+  <div class="container-scroller">
+    <%-include('../../adminlayout/partials/navbar') %>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <%-include('../../adminlayout/partials/topbar') %>
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Update User Account</h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin/edit_account">Edit Account</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                 Update User Account
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">User Details</h4>
+                  <p class="card-description">Edit User Information</p>
+                  <form action="/admin/users/<%= user.id %>/edit_account" method="POST" class="forms-sample">
+                    <div class="form-group">
+                      <label for="fullname">Full Name</label>
+                      <input type="text" class="form-control" id="fullname" name="fullname" value="<%= user.fullname %>" placeholder="Full Name" />
+                    </div>
+                    <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" class="form-control" id="username" name="username" value="<%= user.username %>" placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email address</label>
+                      <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>" placeholder="Email" />
+                    </div>
+                    <div class="form-group">
+                      <label for="country">Country</label>
+                      <input type="text" class="form-control" id="country" name="country" value="<%= user.country %>" placeholder="Country" />
+                    </div>
+                    <div class="form-group">
+                      <label for="currency">Currency</label>
+                      <input type="text" class="form-control" id="currency" name="currency" value="<%= user.currency %>" placeholder="Currency" />
+                    </div>
+                    <div class="form-group">
+                      <label for="gender">Gender</label>
+                      <input type="text" class="form-control" id="gender" name="gender" value="<%= user.gender %>" placeholder="Gender" />
+                    </div>
+                    <div class="form-group">
+                      <label for="phone_number">Phone Number</label>
+                      <input type="text" class="form-control" id="phone_number" name="phone_number" value="<%= user.phone_number %>" placeholder="Phone Number" />
+                    </div>
+                    <div class="form-group">
+                      <label for="referer">Referer</label>
+                      <input type="text" class="form-control" id="referer" name="referer" value="<%= user.referer %>" placeholder="Referer" />
+                    </div>
+                  <input type="hidden" name="method" value="userUpdate">
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-dark">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">User Assets</h4>
+                  <p class="card-description">Update User Assets</p>
+                  <form action="/admin/users/<%= user.id %>/edit_account" method="POST" class="forms-sample">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="total_balance">Total Balance</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="total_balance" name="total_balance" value="<%= userAsset.total_balance %>" placeholder="Total Balance" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="profit">Profit</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="profit" name="profit" value="<%= userAsset.profit %>" placeholder="Profit" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="trade_bonus">Trade Bonus</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="trade_bonus" name="trade_bonus" value="<%= userAsset.trade_bonus %>" placeholder="Trade Bonus" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="referal_bonus">Referral Bonus</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="referal_bonus" name="referal_bonus" value="<%= userAsset.referal_bonus %>" placeholder="Referral Bonus" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="total_won">Total Won</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="total_won" name="total_won" value="<%= userAsset.total_won %>" placeholder="Total Won" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="total_loss">Total Loss</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="total_loss" name="total_loss" value="<%= userAsset.total_loss %>" placeholder="Total Loss" />
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="total_deposit">Total Deposit</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="total_deposit" name="total_deposit" value="<%= userAsset.total_deposit %>" placeholder="Total Deposit" />
+                        </div>
+                      </div><div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="total_withdrawal">Total Withdrawal</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="total_withdrawal" name="total_withdrawal" value="<%= userAsset.total_withdrawal %>" placeholder="Total Withdrawal" />
+                        </div>
+                      </div><div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="total_pending_deposit">Total Pending Deposit</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="total_pending_deposit" name="total_pending_deposit" value="<%= userAsset.total_pendingdeposit %>" placeholder="Total Pending Deposit" />
+                        </div>
+                      </div><div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="total_pending_withdrawal">Total Pending Withdrawal</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="total_pending_withdrawal" name="total_pending_withdrawal" value="<%= userAsset.total_pendingwithdrawal %>" placeholder="Total Pending Withdrawal" />
+                        </div>
+                        <input type="hidden" name="username" value="<%= userAsset.username %>">
+                      </div>
+                      <div>
+                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-dark">Cancel</button>
+                      </div>
+                   
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+    <%-include('../../adminlayout/partials/footer') %>

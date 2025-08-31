@@ -1,0 +1,1028 @@
+<!-- Display current avatar -->
+
+
+<%-include("../partials/header.ejs") %>
+        
+<div class="main-content side-content pt-0">
+    <div class="main-container container-fluid">
+        <div class="inner-body">
+            <div id="mobileshow" class="see"></div>
+            <div class="sees hide-mobile"></div>
+            
+               <% if(success) { %>
+                      <div class="alert alert-success">
+                             Password updated successfully!
+                        </div>
+                    <% } %>
+                        <% if(error) { %>
+                            <div class="alert alert-danger">
+                                <%= error %>
+                            </div>
+                 <% } %>
+            
+            <!--Row-->
+            <div class="row row-sm">
+                <div class="col-lg-8 offset-lg-2">
+                    <!-- div -->
+                    <div class="card custom-card" id="tabs-style43">
+                        <div class="card-body">
+                            
+                             <div class="main-content-label mg-b-5">
+                                Settings
+                            </div>
+                            <div class="text-wrap mt-4">
+                                <div class="d-md-flex">
+                                    <div class="">
+                                        <div class="panel panel-primary tabs-style-4">
+                                            <div class="tab-menu-heading">
+                                                <div class="tabs-menu ">
+                                                    <!-- Tabs -->
+                                                    <ul class="nav panel-tabs me-3">
+                                                        <li class=""><a href="#tab21" class="active"
+                                                                data-bs-toggle="tab"> Profile</a></li>
+                                                        <li class="mt-2"><a href="#tab22" data-bs-toggle="tab">
+                                                                Security</a>
+                                                        </li>
+                                                                                                                <li class="mt-2"><a href="#tab23" data-bs-toggle="tab">
+                                                                Verification</a>
+                                                        </li>
+                                                                                                            </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="tabs-style-4 ">
+                                        <div class="panel-body tabs-menu-body p-0">
+                                            <div class="tab-content">
+                                                        <div class="tab-pane active" id="tab21">
+                                                    <h6 class="fw-bold mb-0"><%= user.username %></h6>
+                                                    <p>Edit your account info and profile photo.</p>
+                                                    <div class="p-4 rounded-20 d-block border bord-light mb-5"
+                                                        style="background-color: rgb(34, 39, 57) !important;">
+                                                        
+                                                        <div class="form-row">
+                                                            <div class="form-group col-lg-6 col-12 mb-2">
+                                                                <div><label class="label-block mb-0">Fullname:</label>
+                                                                </div>
+                                                                <input type="text"
+                                                                    value="<%= user.fullname %>"
+                                                                    class="form-control" readonly>
+                                                            </div>
+                                                            <div class="form-group col-lg-6 col-12 mb-2">
+                                                                <div><label class="label-block mb-0">Username:</label>
+                                                                </div>
+                                                                <input type="text" name="username"
+                                                                    value="<%= user.username %>"
+                                                                    class="form-control" placeholder="Username" readonly>
+                                                            </div>
+                                                            <div class="form-group col-lg-6 col-12 mb-2">
+                                                                <div><label class="label-block mb-0">Email:</label>
+                                                                </div>
+                                                                <input type="text"
+                                                                    value="<%= user.email %>"
+                                                                    class="form-control" placeholder="Email"
+                                                                    readonly>
+                                                            </div>
+                                                            
+                                                        
+                                                            
+                                                            <div class="form-group col-lg-6 col-12 mb-2">
+                                                                <div><label class="label-block mb-0">Phone:</label>
+                                                                </div>
+                                                                <input type="text"
+                                                                    value="<%= user.phone_number %>"
+                                                                    class="form-control" placeholder="Phone" readonly>
+                                                            </div>
+                                                            
+                                                            
+                                                            <div class="form-group col-lg-3 col-6 mb-2">
+                                                                <div><label class="label-block mb-0">Country:</label>
+                                                                </div>
+                                                                <input type="text" value="<%= user.country.slice(0, 3) %>"
+                                                                    class="form-control" readonly>
+                                                            </div>
+                                                            
+                                                            
+                                                            <div class="form-group col-lg-4 col-6 mb-2">
+                                                                <div><label class="label-block mb-0">Plan:</label>
+                                                                </div>
+                                                                <input type="text"
+                                                                    value="BASIC"
+                                                                    class="form-control" readonly>
+                                                            </div>
+                                                            <div class="form-group col-lg-3 col-6 mb-2">
+                                                                <div><label class="label-block mb-0">Gender:</label>
+                                                                </div>
+                                                                <input type="text"
+                                                                    value="<%= user.gender.slice(0, 1) %>"
+                                                                    class="form-control"readonly>
+                                                            </div>
+                                                            
+                                                            
+                                                            
+                                                            <div class="form-group col-lg-4 col-6 mb-2">
+                                                                <div><label class="label-block mb-0"> Join Date:</label>
+                                                                </div>
+                                                                <input type="text"
+                                                                    value="<%= user.created_at.toLocaleDateString('en-US') %>"
+                                                                    class="form-control" readonly>
+                                                            </div>
+                                                            
+                                                            
+                                                            
+                                                            
+                                                        </div>
+                                                
+                                                        
+                                                
+                                                        
+                                                        
+                                                       
+                                                    </div>
+                                                    <h6 class="fw-bold mb-0"> Edit Profile</h6> <br>
+                                               
+                                               
+                                                    <form class="form-horizontal" method="post" action="/account/user/profile/edit">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-lg-6 col-12 mb-2">
+                                                                <div><label class="label-block mb-0">Currency:</label>
+                                                                </div>
+                                                                
+                                                                <input type="hidden" name="username" value="<%=user.username%>" class="form-control">
+                                                                <input type="text" name="currency" value="" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-lg-6 col-12 mb-2">
+                                                                <div><label class="label-block mb-0">Withdrawal Code:</label>
+                                                                </div>
+                                                                <input type="number" name="withdrawalOtp" value="" class="form-control" >
+                                                            </div>
+                                                            <div class="form-group col-md-12 mb-2">
+                                                                <div><label class="label-block mb-0">Your Password:</label>
+                                                                </div>
+                                                                <input type="password" type="password" name="password" class="form-control" required>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                           <center>   <input type="submit"  class="btn btn-info" value="Update Profile" name="submit"/></center> </center>
+                                                    </form>
+                                                </div>
+                                               
+                                                <div class="tab-pane" id="tab22">
+                                                    <p class="mb-0 text-white" style="font-weight: 500;">Email</p>
+                                                    <p>Your email address and username are an essential part of your sign in process.
+                                                    </p>
+                                                    <p class="mb-0 text-white" style="font-weight: 500;">Password</p>
+                                                    <p>Edit your sign-in password.</p>
+                                                    <form class="form-horizontal" method="post" action="/user/changepassword">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12 mb-2">
+                                                                <label class="label-block mb-0 text-white"
+                                                                    style="font-weight: 500;">
+                                                                    Username</label>
+                                                                <input type="text" name="username" value="<%= user.username %>" class="form-control"
+                                                                    readonly>
+                                                            </div>
+                                                            
+                                                            
+                                                            
+                                                            <div class="form-group col-md-12 mb-2">
+                                                                <label class="label-block mb-0 text-white"
+                                                                    style="font-weight: 500;">Current
+                                                                    Password</label>
+                                                                <input type="password" name="currentPassword" class="form-control"
+                                                                    required="">
+                                                            </div>
+                                                            <div class="form-group col-md-12 mb-2">
+                                                                <label class="label-block mb-0 text-white"
+                                                                    style="font-weight: 500;">New Password</label>
+                                                                <input type="password" name="newPassword" class="form-control"
+                                                                    required="">
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        
+                                                            
+                                                            <center>   <input type="submit"  class="btn btn-info" value="Update Password" name="submit"/></center> </center>
+                                                    </form>
+                                                </div>
+                                                <div class="tab-pane" id="tab23">
+                                                    <h4 class="mb-0 fw-bold">Verification</h4>
+                                                    <p>Check your verification status and request verification.</p>
+                                                    <!--Row-->
+                                                    <div class="card custom-card">
+                                                        <div class="card-body">
+                                                            <h6 class="mb-2 fw-bold text-white fs-6">Status</h6>
+                                                                                                                        
+                                                        
+ <p class='text-danger mb-0'> Your account is not verified. To verify your account, please click the request verification button.  </p>
+         
+
+  
+  									                  </div>
+                                                    </div>
+                                                    <div class="card custom-card">
+                                                        <div class="card-body">
+                                                   
+                                                   
+                                                   
+                                                   
+                                                   
+                                                                                                              
+                                                        
+
+
+
+<h6 class='mb-0 fw-bold text-white fs-6'> Submit Verification</h6>
+                                                            <p>To request an account verification, kindly click on the button below.
+                                                            </p>
+                                                            
+                                                            
+                                                             <a  onclick="document.getElementById('id01').style.display='block'" class="nav-link">
+                 
+                   <input type='submit'  class='btn btn-info' value=' Request Verification ' readonly/> 
+                </a>            
+
+  
+        
+                                                   
+                                                   
+                                                   
+                                                   
+                                                   
+                                                   
+                                                                                                                        
+                                                            
+                                                                                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>                                 
+
+      
+      
+      
+  
+    
+<link rel="stylesheet" href="/account/user/w3.css">  
+
+
+<div class="w3-container" >
+ 
+
+  <div id="id01" class="w3-modal" >
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+      <div class=""><br>
+        <span style="color:#000" onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close">&times;</span>
+    <h4 style="padding:0px 10px 0px 10px; color:#000;font-weight: 400"> Verify Account </h4>
+      </div>
+      
+      <hr style="color:#000">
+
+
+<p class="form-group col-md-12">
+                                      
+                                     
+
+             <span onclick="document.getElementById('id0111').style.display='block'" style="background-color:#007bd8; color:#fff; width: 100%; padding: 10px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />       Account Not Verified  <i class="fas fa-user-cog size-icon-about icon-blue" style="position: absolute;
+
+  right: 10px;
+  padding: 0px 20px;
+  font-size:20px"></i></span>                         
+                                      
+                                              
+                                                <span onclick="document.getElementById('id01id').style.display='block'" style="background-color:#f9f9f9; color:#000; width: 100%; padding: 12px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:10px" />     <i class="fas fa-file-alt size-icon-about icon-blue" style="font-size:20px"></i>  Proof of Identity </span>
+                                                
+                                                
+                                                
+                                                <span onclick="document.getElementById('id01add').style.display='block'" style="background-color:#f9f9f9; color:#000; width: 100%; padding: 12px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:10px" />     <i class="fa fa-map-marker size-icon-about icon-blue" style="font-size:20px"></i>  
+Proof of Address
+ </span>
+                                                
+                                        
+                                                
+                                                
+                                                <span onclick="document.getElementById('id01face').style.display='block'" style="background-color:#f9f9f9; color:#000; width: 100%; padding: 12px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:10px" />     <i class="fas fa-file-image size-icon-about icon-blue" style="font-size:20px"></i>  
+Face Recognition </span>
+                                                
+                                               
+                                            </p>
+     
+      
+       
+       
+       </center> 
+
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-white">
+      
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+            
+    
+   <!--   Proof of Identity -->  
+   
+    
+<div class="w3-container">
+ 
+
+  <div id="id01id" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+      <div class=""><br>
+        <span style="color:#000" onclick="document.getElementById('id01id').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close">&times;</span>
+    <h4 style="padding:0px 10px 0px 10px; color:#000;font-weight: 400"> Verify Account </h4>
+      </div>
+      
+      <hr style="color:#000">
+
+
+<div class="form-group col-md-12" style="background-color:#fff; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 0px 40px; margin-bottom:30px" >
+       
+       
+       
+               <div style=" float: left;
+  width: 50%; background-color:#fff; color:#000;font-weight: 300;font-size:15px" >
+   
+    <p>  Identify Verification  </p>
+  </div>
+  
+  
+  
+  
+  <div style=" float: left;text-align: right;
+  width: 50%; background-color:#fff; color:#000; font-weight: 300;font-size:15px">
+ 
+    <p onclick="document.getElementById('id01id').style.display='none'" > <i class="fa fa-arrow-left size-icon-about icon-blue" style="font-size:15px"></i> Go back</p>
+  </div>                      
+                                     
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .box{
+        color: #fff;
+      
+        display: none;
+        margin-top: 20px;
+    }
+   
+  
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".box").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".box").hide();
+            }
+        });
+    }).change();
+});
+</script>
+    <div>
+        <select style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:10px" >
+            <option>Document</option>
+            <option value="red">Passport</option>
+            <option value="green">Driver's License</option>
+            <option value="blue">ID Card</option>
+        </select>
+        
+        
+        <p style="margin-top:30px; margin-bottom:30px;color:#26a69a;"> Make sure the document shows your photo, full name, date of birth and date of issue. </p>
+        
+        
+        
+    </div>
+    
+    
+    
+    
+
+
+<form action="checkf.php" method="post" enctype="multipart/form-data">
+    
+    
+    
+    
+    <div class="red box">
+        
+        <span style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <div class="file-block">
+    <i class="fas fa-file-upload size-icon-about icon-blue" style="font-size:20px"></i>  <button class="btn-select-file" style="border: 0px;"  required>Upload Passport Front</button>
+  <input type="file" name="file" style="display: none;border: 0px;" required>
+</div>      
+
+</span>
+  
+  
+  <span style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    
+  <div class="file-block">
+    <i class="fas fa-file-upload size-icon-about icon-blue" style="font-size:20px"></i>  <button class="btn-select-file" style="border: 0px;" 
+     required>Upload Passport Back</button>
+  <input type="file" name="fileb" style="display: none;border: 0px;" required>
+</div>   
+
+   </span>
+  
+  
+  
+  
+  <center>
+
+ <span style="background-color:#007bd8; color:#fff; width: 100%; padding: 0px 20px; display: inline-block; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <button style="background-color:#007bd8; color:#fff;" type="submit" class="btn btn-"> Submit Document  </button> </span>
+ </center>
+  
+  
+  
+  </div>
+  
+  
+  
+  
+  
+  
+
+
+    </form>
+    
+  
+  
+  
+  
+  
+<form action="checkf.php" method="post" enctype="multipart/form-data">
+  
+  
+    <div class="green box">
+        
+        <span style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <div class="file-block">
+    <i class="fas fa-file-upload size-icon-about icon-blue" style="font-size:20px"></i>  <button class="btn-select-file" style="border: 0px;"  required>Upload Driver's License Front</button>
+  <input type="file" name="file" style="display: none;border: 0px;" required>
+</div>      
+
+</span>
+  
+  
+  <span style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    
+  <div class="file-block">
+    <i class="fas fa-file-upload size-icon-about icon-blue" style="font-size:20px"></i>  <button class="btn-select-file" style="border: 0px;"  required>Upload Driver's License Back</button>
+  <input type="file" name="fileb" style="display: none;border: 0px;" required>
+</div>   
+
+   </span>
+  
+  
+  
+  
+  <center>
+
+ <span style="background-color:#007bd8; color:#fff; width: 100%; padding: 0px 20px; display: inline-block; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <button style="background-color:#007bd8; color:#fff;" type="submit" class="btn btn-"> Submit Document  </button> </span>
+ </center>
+ 
+  </div>
+  
+  
+  
+    </form>
+    
+    
+    
+  
+<form action="checkf.php" method="post" enctype="multipart/form-data">
+  
+  
+    <div class="blue box">
+        
+        <span style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <div class="file-block">
+    <i class="fas fa-file-upload size-icon-about icon-blue" style="font-size:20px"></i>  <button class="btn-select-file" style="border: 0px;"  required>Upload ID Card Front</button>
+  <input type="file" name="file" style="display: none;border: 0px;" required>
+</div>      
+
+</span>
+  
+  
+  <span style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    
+  <div class="file-block">
+    <i class="fas fa-file-upload size-icon-about icon-blue" style="font-size:20px"></i>  <button class="btn-select-file" style="border: 0px;"  required>Upload ID Card Back</button>
+  <input type="file" name="fileb" style="display: none;border: 0px;" required>
+</div>   
+
+   </span>
+  
+  
+  
+  
+  <center>
+
+ <span style="background-color:#007bd8; color:#fff; width: 100%; padding: 0px 20px; display: inline-block; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <button style="background-color:#007bd8; color:#fff;" type="submit" class="btn btn-"> Submit Document  </button> </span>
+ </center>
+ 
+  </div>
+  
+  
+  
+    </form>
+    
+    
+
+    
+
+                                 
+                                 </div>     
+                                              
+       
+       </center> 
+
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-white">
+      
+        
+      </div>
+      
+      
+          </div>
+      
+      
+          </div>
+      
+      
+      
+      
+      
+      
+      
+   
+   
+   
+   
+   
+    
+   <!--   Proof of Address -->  
+   
+    
+<div class="w3-container">
+ 
+
+  <div id="id01add" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+      <div class=""><br>
+        <span style="color:#000" onclick="document.getElementById('id01add').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close">&times;</span>
+    <h4 style="padding:0px 10px 0px 10px; color:#000;font-weight: 400"> Verify Account </h4>
+      </div>
+      
+      <hr style="color:#000">
+
+
+<div class="form-group col-md-12" style="background-color:#fff; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 0px 40px; margin-bottom:30px" >
+       
+       
+       
+               <div style=" float: left;
+  width: 50%; background-color:#fff; color:#000;font-weight: 300;font-size:15px" >
+   
+    <p>  Address Verification  </p>
+  </div>
+  
+  
+  
+  
+  <div style=" float: left;text-align: right;
+  width: 50%; background-color:#fff; color:#000; font-weight: 300;font-size:15px">
+ 
+    <p onclick="document.getElementById('id01add').style.display='none'" > <i class="fa fa-arrow-left size-icon-about icon-blue" style="font-size:15px"></i> Go back</p>
+  </div>                      
+                                     
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .box{
+        color: #fff;
+      
+        display: none;
+        margin-top: 20px;
+    }
+   
+  
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".box").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".box").hide();
+            }
+        });
+    }).change();
+});
+</script>
+    <div>
+        <select style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:10px" >
+            <option>Document</option>
+            <option value="red">Bank Statement</option>
+            <option value="green">Birth Certificate</option>
+            <option value="blue"> Utility Bill </option>
+        </select>
+        
+        
+        <p style="margin-top:30px; margin-bottom:30px;color:#26a69a;"> Make sure the document shows your photo, full name, date of birth and date of issue. </p>
+        
+        
+        
+    </div>
+    
+    
+    
+    
+
+
+<form action="checkb.php" method="post" enctype="multipart/form-data">
+    
+    
+    
+    
+    <div class="red box">
+        
+        <span style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <div class="file-block">
+    <i class="fas fa-file-upload size-icon-about icon-blue" style="font-size:20px"></i>  <button class="btn-select-file" style="border: 0px;"  required>Upload Bank Statement</button>
+  <input type="file" name="file" style="display: none;border: 0px;" required>
+</div>      
+
+</span>
+  
+  
+  <center>
+
+ <span style="background-color:#007bd8; color:#fff; width: 100%; padding: 0px 20px; display: inline-block; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <button style="background-color:#007bd8; color:#fff;" type="submit" class="btn btn-"> Submit Document  </button> </span>
+ </center>
+  
+  
+  
+  </div>
+  
+  
+  
+  
+  
+  
+
+
+    </form>
+    
+  
+  
+  
+  
+  
+<form action="checkb.php" method="post" enctype="multipart/form-data">
+  
+  
+    <div class="green box">
+        
+        <span style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <div class="file-block">
+    <i class="fas fa-file-upload size-icon-about icon-blue" style="font-size:20px"></i>  <button class="btn-select-file" style="border: 0px;"  required>Upload Birth Certificate </button>
+  <input type="file" name="file" style="display: none;border: 0px;" required>
+</div>      
+
+</span>
+  
+  
+  <center>
+
+ <span style="background-color:#007bd8; color:#fff; width: 100%; padding: 0px 20px; display: inline-block; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <button style="background-color:#007bd8; color:#fff;" type="submit" class="btn btn-"> Submit Document  </button> </span>
+ </center>
+ 
+  </div>
+  
+  
+  
+    </form>
+    
+    
+    
+  
+<form action="checkb.php" method="post" enctype="multipart/form-data">
+  
+  
+    <div class="blue box">
+        
+        <span style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <div class="file-block">
+    <i class="fas fa-file-upload size-icon-about icon-blue" style="font-size:20px"></i>  <button class="btn-select-file" style="border: 0px;"  required>Upload Utility Bill </button>
+  <input type="file" name="file" style="display: none;border: 0px;" required>
+</div>      
+
+</span>
+  
+  
+  
+  <center>
+
+ <span style="background-color:#007bd8; color:#fff; width: 100%; padding: 0px 20px; display: inline-block; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <button style="background-color:#007bd8; color:#fff;" type="submit" class="btn btn-"> Submit Document  </button> </span>
+ </center>
+ 
+  </div>
+  
+  
+  
+    </form>
+    
+
+
+                                 
+                                 </div>     
+                                              
+       
+       </center> 
+
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-white">
+      
+        
+      </div>
+      
+      
+          </div>
+      
+      
+          </div>
+      
+      
+      
+         
+      
+      
+      
+      
+      
+      
+   
+   
+    
+   <!--   Proof of Face -->  
+   
+    
+<div class="w3-container">
+ 
+
+  <div id="id01face" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+      <div class=""><br>
+        <span style="color:#000" onclick="document.getElementById('id01face').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close">&times;</span>
+    <h4 style="padding:0px 10px 0px 10px; color:#000;font-weight: 400"> Verify Account </h4>
+      </div>
+      
+      <hr style="color:#000">
+
+
+<div class="form-group col-md-12" style="background-color:#fff; color:#000; width: 100%; padding: 0px 40px; margin-bottom:30px" >
+       
+       
+       
+               <div style=" float: left;
+  width: 50%; background-color:#fff; color:#000;font-weight: 300;font-size:15px" >
+   
+    <p>  Facial Verification  </p>
+  </div>
+ 
+ 
+  
+  <div style=" float: left;text-align: right;
+  width: 50%; background-color:#fff; color:#000; font-weight: 300;font-size:15px">
+ 
+    <p onclick="document.getElementById('id01face').style.display='none'" > <i class="fa fa-arrow-left size-icon-about icon-blue" style="font-size:15px"></i> Go back </p>
+  </div>                      
+                                     
+ 
+  <center>
+  <img src="/images/face.png"/>
+  
+  </center>
+
+
+<style>
+    .box{
+        color: #fff;
+      
+        display: none;
+        margin-top: 20px;
+    }
+   
+  
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".box").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".box").hide();
+            }
+        });
+    }).change();
+});
+</script>
+    <div>
+        
+        
+        
+       
+    <p style="font-size:13px; margin-top:30px; margin-bottom:5px;color:#7a7a7a;">     <i class='fa fa-check' style='color:#26a69a'></i>  Make sure Take a selfie of yourself with a neutral expression </p>
+<p style="font-size:13px; margin-top:5px; margin-bottom:5px;color:#7a7a7a;">    <i class='fa fa-check' style='color:#26a69a'></i>Make sure your whole face is visible, centred, and your eyes are open</p>
+<p style="font-size:13px; margin-top:5px; margin-bottom:5px;color:#7a7a7a;">  <i class='fa fa-close' style='color: red'></i> Do not crop your ID or use screenshots of your ID</p>
+ <p style="font-size:13px; margin-top:5px; margin-bottom:30px;color:#7a7a7a;"> <i class='fa fa-close' style='color: red'></i> Do not hide or alter parts of your face (No hats/beauty images/filters/headgear) </p>
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+<form action="checkr.php" method="post" enctype="multipart/form-data">
+    
+    
+    
+    
+        <span style="background-color:#f9f9f9; background-image: url('images/pattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;color:#000; width: 100%; padding: 8px 20px; display: inline-block;border: 1px solid #000; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <div class="file-block">
+    <i class="fa fa-camera size-icon-about icon-blue" style="font-size:20px"></i>  <button class="btn-select-file" style="border: 0px;"  required>Upload Photo </button>
+  <input type="file" name="file" style="display: none;border: 0px;" required>
+</div>      
+
+</span>
+  
+  
+  <center>
+
+ <span style="background-color:#007bd8; color:#fff; width: 100%; padding: 0px 20px; display: inline-block; border-radius: 4px; box-sizing: border-box; margin-bottom:30px" />    <button style="background-color:#007bd8; color:#fff;" type="submit" class="btn btn-"> Submit Document  </button> </span>
+ </center>
+  
+  
+  
+  
+  
+
+
+    </form>
+    
+        
+    </div>
+    
+    
+    
+    
+  
+  
+  
+    
+<!-- upload file -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+const fileBlocks = document.querySelectorAll('.file-block')
+const buttons = document.querySelectorAll('.btn-select-file')
+
+;[...buttons].forEach(function (btn) {
+  btn.onclick = function () {
+    btn.parentElement.querySelector('input[type="file"]').click()
+  }
+})
+
+;[...fileBlocks].forEach(function (block) {
+  block.querySelector('input[type="file"]').onchange = function () {
+    const filename = this.files[0].name
+
+    block.querySelector('.btn-select-file').textContent = 'File selected: ' + filename
+  }
+})
+</script>
+  
+    
+    
+
+                                 
+                                 </div>     
+                                              
+       
+       </center> 
+
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-white">
+      
+        
+      </div>
+      
+      
+          </div>
+      
+      
+          </div>
+      
+      
+      
+         
+      
+      
+
+    </div>
+  </div>
+</div>
+            
+
+  
+  
+                                       
+
+<br><br><br><br>
+
+  <%-include('../partials/footer')%>

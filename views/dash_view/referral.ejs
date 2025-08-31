@@ -1,0 +1,138 @@
+<%-include("../partials/header.ejs") %>
+
+<div class="main-content side-content pt-0">
+  <div class="main-container container-fluid">
+    <div class="inner-body">
+      <div id="mobileshow" class="see"></div>
+      <div class="sees hide-mobile"></div>
+      <div class="mb-5">
+        <h3 class="fw-bold text-white mb-3 text-center">Referrals</h3>
+      </div>
+      <!--Row-->
+
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-12 g-3">
+          <center>
+            <p style="background-color: #000; color: #fff" class="btn btn">
+              <br /><br />
+              <input
+                type="text"
+                class="copy_text"
+                size="30"
+                style="color: #000"
+                value="https://zenithswipes.com/account/user/register.php?ref=<%= user.username %>"
+                readonly
+              />
+
+              <br /><br />
+
+              <button
+                style="background-color: #0094ff"
+                class="btn btn-info"
+                onclick="Copy()"
+              >
+                Copy
+              </button>
+            </p>
+          </center>
+
+          <script>
+            var copy_text_val = document.querySelector(".copy_text");
+
+            function Copy() {
+              copy_text_val.select();
+              document.execCommand("copy");
+              console.log(copy_text_val.value);
+            }
+          </script>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <br />
+
+            <div class="panel panel-red">
+              <div class="panel-body">
+                <form method="post" action="registration">
+                  <div class="table-responsive">
+                    My Referrals
+
+                    <table class="table table-hover table-bordered">
+                      <thead>
+                        <tr>
+                          <th><center>UserName</center></th>
+                          <th><center>Full Name</center></th>
+                          <th><center>Email</center></th>
+                          <th><center>Phone</center></th>
+
+                          <th><center>Register Date</center></th>
+                          <!--   <th><center>Referral</center></th>
+                                                <th><center>Option</center></th>
+                                                       -->
+                        </tr>
+                      </thead>
+                      <br />
+                      <tbody></tbody>
+                    </table>
+
+                 <script>
+                  async function loadReferrals() {
+                    try {
+                      const res = await fetch("/api/referrals", {
+                        headers: { Accept: "application/json" },
+                      });
+                      if (!res.ok) throw new Error("Failed to load referrals");
+                      const body = await res.json();
+                      // Validate response
+                      if (!body.success) throw new Error(body.message || "Failed");
+                      const tbody = document.querySelector("table tbody");
+                      if (!tbody) return console.error("Referrals table body not found");
+                      tbody.innerHTML = "";
+                      // Ensure referrals is an array before reading length
+                      if (!Array.isArray(body.referrals) || body.referrals.length === 0) {
+                        tbody.innerHTML = '<br><tr><td colspan="6" class="text-center h6">No Recent Referrals</td></tr>';
+                      } else {
+                        body.referrals.forEach((d) => {
+                        const tr = document.createElement("tr");
+                        tr.innerHTML = `
+                    <td><center>${d.id || d.id}</center></td>
+                    <td><center>${d.fullname || ""}</center></td>
+                    <td><center>${d.email || ""}</center></td>
+                    <td><center>${d.phone_number || ""}</center></td>
+                    <td><center>${d.register_date || new Date(d.createdAt).toLocaleString()}</center></td>
+                `;
+                        tbody.appendChild(tr);
+                        });
+                      }
+                    } catch (err) {
+                      console.error("Could not load referrals:", err);
+                    }
+                  }
+                  document.addEventListener("DOMContentLoaded", loadReferrals);
+                </script>
+                  </div>
+
+                  <!--End row-->
+
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+                  <!--End row-->
+
+                 
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <%-include("../partials/footer.ejs") %>
+

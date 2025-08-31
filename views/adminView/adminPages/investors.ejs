@@ -1,0 +1,89 @@
+<%-include('../../adminlayout/partials/header')%>
+  <body>
+    <div class="container-scroller">
+
+      <%-include('../../adminlayout/partials/navbar') %>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+       <%-include('../../adminlayout/partials/topbar') %>
+
+
+
+       <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row ">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">All Investors</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>
+                              <!-- <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                <i class="input-helper"></i></label>
+                              </div> -->
+                            </th>
+                            <th>  Name </th>
+                            <th> Username </th>
+                            <th> Email </th>
+                            <th> Country </th>
+                            <th> Registered Date </th>
+                            <th> Status </th>
+                            <!-- <th> Payment Status </th> -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% if (Array.isArray(users) && users.length) { %>
+                            <% users.forEach(function(u) { %>
+                              <tr>
+                                <td>
+                                  <!-- <div class="form-check form-check-muted m-0">
+                                    <label class="form-check-label">
+                                      <input type="checkbox" class="form-check-input">
+                                    <i class="input-helper"></i></label>
+                                  </div> -->
+                        <img src="<%= u.avatar || '/main/assets/img/default-avatar.png' %>" alt="image" style="width:32px;height:32px;border-radius:50%;object-fit:cover">
+
+                                </td>
+                                <td>
+                                  <span class="pl-2"><%= (u.fullname && u.fullname.trim()) ? u.fullname : (u.username || '—') %></span>
+                                </td>
+                                <td><%= u.username || '—' %></td>
+                                <td><%= u.email || '—' %></td>
+                                <td><%= u.country || '—' %></td>
+                                <td><%= (u.created_at || u.createdAt) ? new Date(u.created_at || u.createdAt).toLocaleString() : '—' %></td>
+                                <td>
+                                  <div class="badge badge-outline-warning">Active</div>
+                                </td>
+                                <td>
+                                  <div class="badge badge-outline-success">Active</div>
+                                </td>
+                              </tr>
+                            <% }) %>
+                          <% } else { %>
+                            <tr>
+                              <td colspan="7" class="text-center">No registered users found</td>
+                            </tr>
+                          <% } %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+       </div>
+
+
+
+
+
+
+
+       <%-include('../../adminlayout/partials/footer') %>

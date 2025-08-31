@@ -1,0 +1,315 @@
+
+<%-include("../partials/header.ejs") %>
+    
+
+                               <div class="main-content side-content pt-0">
+    <div class="main-container container-fluid">
+        <div class="inner-body">
+            <div id="mobileshow" class="see"></div>
+            <div class="sees hide-mobile"></div>
+            <h4 class="mb-0 fw-bold tetx-white">Signals</h4>
+            <p>Purchase trading signals and manage your signal history</p>
+            <p class="balance d-none">0</p>
+            <div class="row">
+          
+        
+        
+                       
+               
+
+                     
+   
+
+                        
+                        
+                              <div class="col-sm-12 col-md-12 col-lg-6">
+                    <div class="card custom-card bgd-svg" style="min-height: 150px;">
+                        <div class="card-body" style="background-image:url(images/sig.png); background-position: center;background-repeat: no-repeat;background-size: cover;
+  height: 100%;
+  background-position: center;
+  background-size: cover;margin-bottom:20px; border-radius: 8px;
+  padding: 5px; min-height: 130px; overflow: hidden; background-color:#000; border: 1px solid #686868;">
+                            <div class="transaction d-flex justify-content-between align-items-start">
+                                <div class="transaction-blog">
+                                    <i class="fa-solid fa-sack-dollar fs-4 text-white"></i>
+                                    <div class="transaction-details d-flex">
+                                        <div>
+                                            <span class="text-dark tx-bold-12 fs-6">Purchased Signal</span>
+                                          
+                                          
+                                               
+         
+ 
+                
+<h4 class='tx-bold-12' id='profit'> None </h4>
+  
+      
+   
+   
+                                        </div>
+                                    </div>
+                                </div>
+                                <span
+                                    class="rounded-3 py-1 px-2 text-success fw-bold fs-7 bg-lighsuccess">  <%=user.currency%> 0  </span>
+                            </div>
+
+
+                           <br>
+                             <style>
+@keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}.progress{height:10px;margin-bottom:10px;overflow:hidden;background-color:#f5f5f5;border-radius:4px;-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,.1);box-shadow:inset 0 1px 2px rgba(0,0,0,.1)}.progress-bar{float:left;width:0%;height:100%;font-size:8px;line-height:10px;color:#fff;text-align:center;background-color:green;background-image:linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);-webkit-background-size:40px 40px;background-size:40px 40px}.progress-bar.active,.progress.active .progress-bar{-webkit-animation:progress-bar-stripes 2s linear infinite;-o-animation:progress-bar-stripes 2s linear infinite;animation:progress-bar-stripes 2s linear infinite}
+</style>      
+            <div class="d-flex justify-content-between align-items-center ">
+                <h6 class="fw-bold">Signal strength</h6>
+                <h5 class="fw-bold text-white"> <span id="signalbit" class="badge bg-success unread"> 100% </span> </h5>
+            </div>
+            <div class="w-100 rounded-20 mb-5" style="background-color: rgb(21, 24, 35); height: 5px;">
+                
+               <span style="background-color:#fff;" class="progress">
+    <span class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+       </span>     
+    </span>
+            </div>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-2 rounded-10 d-inline-block">
+                <div class="px-3 py-2 rounded-10 d-inline-block" style="background-color: rgb(12, 13, 13);">
+                    <p class="mb-0 fw-bold text-light">Signals</p>
+                </div>
+                <a href="/deposits" class="card px-3 py-2 rounded-10 d-inline-block">
+                    <p class="mb-0 fw-bold text-light">Deposit</p>
+                </a>
+            </div>
+            
+            
+             
+        
+        
+        
+         <br><br>
+          
+            
+            
+            
+            
+            <h5 class="fw-bold text-white mb-4">
+                Active Signals</h5>
+            <!--Row-->
+            <div class="row row-sm">  
+
+                                <div class="col-xxl-3 col-xl-6 col-lg-6 col-sm-6">
+                    <div class="card card-pricing custom-card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="mb-0">
+                                    <h5 class="fs-16 tx-medium text-uppercase">Relative Strength Index (Rsi)                                    </h5>
+                                    <h2 class="mt-2 mb-0 text-light"><%=user.currency%> 9385 <span
+                                            class="text-muted fs-12">/ Amount</span></h2>
+                                </div>
+                                <div class="text-end ms-auto">
+                                    <span class="badge bg-primary-light">Try It Now</span>
+                                </div>
+                            </div>
+                            <hr class="message-inner-separator">
+                            <div class="pricingContent1">
+                                <form action="/signalrequest" method="post">
+                                    <input type="hidden" value="Rsi" name="signal_nam">
+                                    <input type="hidden" value="9385" name="signalPurchaseAmount">
+                                    <input type="hidden" value="<%=user.username%>" name="username">
+                                    <div class="form-group mb-2">
+                                        <label for="" class="mb-0">Amount</label>
+                                        <input type="number" name="paket" class="form-control signal_amount"
+                                            placeholder="9385" required>
+                                    </div>
+                                    <p class="mb-0 text-center text-danger error"></p>
+                                    <button type="submit" class="btn ripple btn-primary btn-block button_signal">Purchase
+                                        Signal <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                                
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col-xxl-3 col-xl-6 col-lg-6 col-sm-6">
+                    <div class="card card-pricing custom-card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="mb-0">
+                                    <h5 class="fs-16 tx-medium text-uppercase">1000 PIPS                                    </h5>
+                                    <h2 class="mt-2 mb-0 text-light"><%=user.currency%> 7455 <span
+                                            class="text-muted fs-12">/ Amount</span></h2>
+                                </div>
+                                <div class="text-end ms-auto">
+                                    <span class="badge bg-primary-light">Try It Now</span>
+                                </div>
+                            </div>
+                            <hr class="message-inner-separator">
+                            <div class="pricingContent1">
+                                <form action="/signalrequest" method="post">
+                                    <input type="hidden" value="1000 PIPS" name="signal_nam">
+                                    <input type="hidden" value="7455" name="signalPurchaseAmount">
+                                    <input type="hidden" value="<%=user.username%>" name="username">
+                                    <div class="form-group mb-2">
+                                        <label for="" class="mb-0">Amount</label>
+                                        <input type="number" name="paket" class="form-control signal_amount"
+                                            placeholder="7455" required>
+                                    </div>
+                                    <p class="mb-0 text-center text-danger error"></p>
+                                    <button type="submit" class="btn ripple btn-primary btn-block button_signal">Purchase
+                                        Signal <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col-xxl-3 col-xl-6 col-lg-6 col-sm-6">
+                    <div class="card card-pricing custom-card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="mb-0">
+                                    <h5 class="fs-16 tx-medium text-uppercase">AVA TRADE                                    </h5>
+                                    <h2 class="mt-2 mb-0 text-light"><%=user.currency%>4895 <span
+                                            class="text-muted fs-12">/ Amount</span></h2>
+                                </div>
+                                <div class="text-end ms-auto">
+                                    <span class="badge bg-primary-light">Try It Now</span>
+                                </div>
+                            </div>
+                            <hr class="message-inner-separator">
+                            <div class="pricingContent1">
+                                <form action="/signalrequest" method="post">
+                                    <input type="hidden" value="AVA TRADE" name="signal_nam">
+                                    <input type="hidden" value="4895" name="signalPurchaseAmount">
+                                    <input type="hidden" value="<%=user.username%>" name="username">
+                                    <div class="form-group mb-2">
+                                        <label for="" class="mb-0">Amount</label>
+                                        <input type="number" name="paket" class="form-control signal_amount"
+                                            placeholder="4895" required>
+                                    </div>
+                                    <p class="mb-0 text-center text-danger error"></p>
+                                    <button type="submit" class="btn ripple btn-primary btn-block button_signal">Purchase
+                                        Signal <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col-xxl-3 col-xl-6 col-lg-6 col-sm-6">
+                    <div class="card card-pricing custom-card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="mb-0">
+                                    <h5 class="fs-16 tx-medium text-uppercase">RoboForex                                    </h5>
+                                    <h2 class="mt-2 mb-0 text-light"><%=user.currency%> 2899 <span
+                                            class="text-muted fs-12">/ Amount</span></h2>
+                                </div>
+                                <div class="text-end ms-auto">
+                                    <span class="badge bg-primary-light">Try It Now</span>
+                                </div>
+                            </div>
+                            <hr class="message-inner-separator">
+                            <div class="pricingContent1">
+                                <form action="/signalrequest" method="post">
+                                    <input type="hidden" value="RoboForex" name="signal_nam">
+                                    <input type="hidden" value="2899" name="signalPurchaseAmount">
+                                    <input type="hidden" value="<%=user.username%>" name="username">
+                                    <div class="form-group mb-2">
+                                        <label for="" class="mb-0">Amount</label>
+                                        <input type="number" name="paket" class="form-control signal_amount"
+                                            placeholder="2899" required>
+                                    </div>
+                                    <p class="mb-0 text-center text-danger error"></p>
+                                    <button type="submit" class="btn ripple btn-primary btn-block button_signal">Purchase
+                                        Signal <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col-xxl-3 col-xl-6 col-lg-6 col-sm-6">
+                    <div class="card card-pricing custom-card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="mb-0">
+                                    <h5 class="fs-16 tx-medium text-uppercase">ZERO TO HERO                                    </h5>
+                                    <h2 class="mt-2 mb-0 text-light"><%=user.currency%>12000 <span
+                                            class="text-muted fs-12">/ Amount</span></h2>
+                                </div>
+                                <div class="text-end ms-auto">
+                                    <span class="badge bg-primary-light">Try It Now</span>
+                                </div>
+                            </div>
+                            <hr class="message-inner-separator">
+                            <div class="pricingContent1">
+                                <form action="/signalrequest" method="post">
+                                    <input type="hidden" value="ZERO TO HERO" name="signal_nam">
+                                    <input type="hidden" value="12000" name="signalPurchaseAmount">
+                                    <input type="hidden" value="<%=user.username%>" name="username">
+                                    <div class="form-group mb-2">
+                                        <label for="" class="mb-0">Amount</label>
+                                        <input type="number" name="paket" class="form-control signal_amount"
+                                            placeholder="12000" required>
+                                    </div>
+                                    <p class="mb-0 text-center text-danger error"></p>
+                                    <button type="submit" class="btn ripple btn-primary btn-block button_signal">Purchase
+                                        Signal <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col-xxl-3 col-xl-6 col-lg-6 col-sm-6">
+                    <div class="card card-pricing custom-card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="mb-0">
+                                    <h5 class="fs-16 tx-medium text-uppercase">WeTalkTrade                                    </h5>
+                                    <h2 class="mt-2 mb-0 text-light"><%=user.currency%>10900 <span
+                                            class="text-muted fs-12">/ Amount</span></h2>
+                                </div>
+                                <div class="text-end ms-auto">
+                                    <span class="badge bg-primary-light">Try It Now</span>
+                                </div>
+                            </div>
+                            <hr class="message-inner-separator">
+                            <div class="pricingContent1">
+                                <form action="/signalrequest" method="post">
+                                    <input type="hidden" value="WeTalkTrade" name="signal_nam">
+                                    <input type="hidden" value="10900" name="signalPurchaseAmount">
+                                    <input type="hidden" value="<%=user.username%>" name="username">
+                                    <div class="form-group mb-2">
+                                        <label for="" class="mb-0">Amount</label>
+                                        <input type="number" name="paket" class="form-control signal_amount"
+                                            placeholder="10900" required>
+                                    </div>
+                                    <p class="mb-0 text-center text-danger error"></p>
+                                    <button type="submit" class="btn ripple btn-primary btn-block button_signal">Purchase
+                                        Signal <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <!--End row-->
+        </div>
+    </div>
+</div>
+
+                                           
+
+<br><br><br>
+
+
+   
+
+  <%-include('../partials/footer')%>

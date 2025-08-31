@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; color: #333; }
+      .card { max-width: 680px; margin: 20px auto; border: 1px solid #e1e1e1; border-radius: 6px; padding: 20px; }
+      .header { font-size: 18px; font-weight: bold; margin-bottom: 8px; }
+      .field { margin: 6px 0; }
+      .muted { color: #666; font-size: 13px }
+      .btn { display:inline-block; padding:8px 12px; background:#1a73e8; color:#fff; border-radius:4px; text-decoration:none }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="header"><%= title %></div>
+      <p class="muted">Hello <%= username || 'User' %>,</p>
+      <p><%= intro || '' %></p>
+      <div class="field"><strong>Amount:</strong> <%= amount %></div>
+      <div class="field"><strong>Transaction ID:</strong> <%= transactionId %></div>
+      <div class="field"><strong>Method:</strong> <%= method %></div>
+      <div class="field"><strong>Status:</strong> <%= status %></div>
+      <% if (cta && cta.url) { %>
+        <p><a class="btn" href="<%= cta.url %>"><%= cta.label || 'View' %></a></p>
+      <% } %>
+      <hr />
+      <p class="muted">Thank you,<br/><%= fromName || 'Support Team' %></p>
+    </div>
+  </body>
+</html>

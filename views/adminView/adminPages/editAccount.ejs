@@ -1,0 +1,81 @@
+<%-include('../../adminlayout/partials/header')%>
+  <body>
+    <div class="container-scroller">
+
+      <%-include('../../adminlayout/partials/navbar') %>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+       <%-include('../../adminlayout/partials/topbar') %>
+
+
+
+       <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row ">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Edit Users Account</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>
+                              <!-- <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                <i class="input-helper"></i></label>
+                              </div> -->
+                            </th>
+                            <th>  Name </th>
+                            <th> Username </th>
+                            <th> Email </th>
+                            <th> Operations </th>
+                            
+                            <!-- <th> Payment Status </th> -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% if (Array.isArray(users) && users.length) { %>
+                            <% users.forEach(function(u) { %>
+                              <tr>
+                                <td>
+                                </td>
+                                <td><%= u.fullname %></td>
+                                <td><%= u.username %></td>
+                                <td><%= u.email %></td>
+                                <td>
+                                  <a href="/admin/users/<%= u.id %>/edit_account" class="btn btn-sm btn-primary">Edit</a>
+                                  <form action="/admin/users/<%= u.id %>/deactivate" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-warning">Deactivate</button>
+                                  </form>
+                                   <form action="/admin/users/<%= u.id %>/delete" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                  </form>
+                                  
+                                </td>
+                              </tr>
+                            <% }); %>
+                          <% } else { %>
+                            <tr>
+                              <td colspan="5">No users found</td>
+                            </tr>
+                          <% } %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+       </div>
+
+
+
+
+
+
+
+       <%-include('../../adminlayout/partials/footer') %>
